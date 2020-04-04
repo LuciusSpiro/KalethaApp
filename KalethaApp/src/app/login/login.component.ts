@@ -44,8 +44,11 @@ export class LoginComponent {
     this.firebaseService.login(this.user)
       .then(() => {
         this.isAuthenticating = false;
-        this.routerExtensions.navigate(["/"], { clearHistory: true });
 
+        return this.userService.fetchCurrentUser();
+      })
+      .then(() => {
+        this.routerExtensions.navigate(["/"], { clearHistory: true });
       })
       .catch((message: any) => {
         this.isAuthenticating = false;

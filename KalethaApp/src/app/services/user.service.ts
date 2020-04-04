@@ -4,7 +4,9 @@ import { IKalethaner } from "../models/kalethaner.model";
 
 const firebase = require("nativescript-plugin-firebase");
 
-@Injectable()
+@Injectable({
+    providedIn: "root"
+})
 export class UserService {
     private currentUser: IKalethaner;
     constructor(

@@ -9,13 +9,23 @@
     NavigationButton as a side-drawer button in iOS is not possible,
     because its function is to always navigate back in the application.
     -->
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
-        ios.position="left">
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
     </ActionItem>
     <Label class="action-bar-title" text="Browse"></Label>
 </ActionBar>
 
-<GridLayout class="page page-content">
-    <Label class="page-icon fa" text="&#xf1ea;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
-</GridLayout>
+
+<FlexboxLayout flexDirection="column" justifyContent="space-between">
+    <ScrollView>
+        <FlexboxLayout flexDirection="column">
+            <FlexboxLayout *ngFor="let message of chat" justifyContent="space-between" flexDirection="row">
+                <Label [text]="message.message"></Label>
+                <Label [text]="message.from"></Label>
+            </FlexboxLayout>
+        </FlexboxLayout>
+    </ScrollView>
+    <FlexboxLayout flexDirection="row">
+        <TextField class="input input-border" width="80%" hint="Nachricht..." [(ngModel)]="neueNachricht"></TextField>
+        <Button text="send Message" class="text-center btn btn-primary" (tap)="sendMessage()"></Button>
+    </FlexboxLayout>
+</FlexboxLayout>
