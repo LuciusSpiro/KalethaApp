@@ -4,6 +4,9 @@ import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angul
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { BackendService } from "./services/backend.service";
+import { FirebaseService } from "./services/firebase.service";
+import { UserService } from "./services/user.service";
 
 @NgModule({
     bootstrap: [
@@ -13,6 +16,11 @@ import { AppComponent } from "./app.component";
         AppRoutingModule,
         NativeScriptModule,
         NativeScriptUISideDrawerModule
+    ],
+    providers: [
+        BackendService,
+        FirebaseService,
+        UserService
     ],
     declarations: [
         AppComponent

@@ -1,0 +1,16 @@
+<ActionBar class="action-bar" title="Kaletha"></ActionBar>
+<StackLayout class="card">
+    <Image *ngIf="isLoggingIn" class="logo" src="res://logo" stretch="none" horizontalAlignment="center"></Image>
+    <StackLayout [class]="isLoggingIn ? 'form white' : 'form gold'">
+        <TextField #email class="input input-border" hint="Email Address" keyboardType="email" [(ngModel)]="user.email" autocorrect="false" autocapitalizationType="none"></TextField>
+        <TextField #password class="input input-border" hint="Password" secure="true" [(ngModel)]="user.password"></TextField>
+        <Label *ngIf="!isLoggingIn" text="Bitte teile uns mit wer du bist:"></Label>
+        <TextField *ngIf="!isLoggingIn" class="input input-border" hint="IT Name" [(ngModel)]="neuerKalethaner.itName"></TextField>
+        <TextField *ngIf="!isLoggingIn" class="input input-border" hint="OT Name" [(ngModel)]="neuerKalethaner.otName"></TextField>
+
+        <Button [text]="isLoggingIn ? 'Login' : 'Register'" class="text-center btn btn-primary" (tap)="submit()"></Button>
+        <Button [text]="isLoggingIn ? 'Register' : 'Back to login'" class="text-center btn" (tap)="toggleDisplay()"></Button>
+        <!--Button horizontalAlignment="center" class="btn" text="Forgot password" (tap)="forgotPassword()" [opacity]="isLoggingIn ? 1 : 0"></Button-->
+    </StackLayout>
+
+</StackLayout>

@@ -1,0 +1,32 @@
+{
+    "project_info": {
+        "project_number": "890704373318",
+        "firebase_url": "https://kaletha-app.firebaseio.com",
+        "project_id": "kaletha-app",
+        "storage_bucket": "kaletha-app.appspot.com"
+    },
+    "client": [{
+        "client_info": {
+            "mobilesdk_app_id": "1:890704373318:android:6356cf2228a8964af10c47",
+            "android_client_info": {
+                "package_name": "org.nativescript.KalethaApp"
+            }
+        },
+        "oauth_client": [{
+            "client_id": "890704373318-18a1pb80suvo7gtf8tudaavmvpgq51ei.apps.googleusercontent.com",
+            "client_type": 3
+        }],
+        "api_key": [{
+            "current_key": "AIzaSyBkX4TeazJMO2HdFqk1B1Sru4Mvrgu6PJ8"
+        }],
+        "services": {
+            "appinvite_service": {
+                "other_platform_oauth_client": [{
+                    "client_id": "890704373318-18a1pb80suvo7gtf8tudaavmvpgq51ei.apps.googleusercontent.com",
+                    "client_type": 3
+                }]
+            }
+        }
+    }],
+    "configuration_version": "1"
+}

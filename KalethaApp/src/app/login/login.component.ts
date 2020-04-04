@@ -1,0 +1,92 @@
+import { Component } from "@angular/core";
+import { User } from "../models/user.model";
+import { RouterExtensions } from "nativescript-angular/router/router-extensions";
+import { FirebaseService } from "../services/firebase.service";
+import { UserService } from "../services/user.service";
+import { IKalethaner } from "../models/kalethaner.model";
+
+@Component({
+  moduleId: module.id,
+  selector: "yw-login",
+  templateUrl: "login.html"
+})
+export class LoginComponent {
+  user: User;
+  neuerKalethaner: IKalethaner;
+  isLoggingIn = true;
+  isAuthenticating = false;
+
+  constructor(private firebaseService: FirebaseService,
+    private routerExtensions: RouterExtensions,
+    private userService: UserService
+  ) {
+    this.user = new User();
+    this.user.email = "";
+    this.user.password = "";
+
+    this.neuerKalethaner = {
+      itName: "",
+      otName: "",
+      rang: "kalethaner"
+    };
+  }
+
+  submit() {
+    this.isAuthenticating = true;
+    if (this.isLoggingIn) {
+      this.login();
+    } else {
+      this.signUp();
+    }
+  }
+
+  login() {
+    this.firebaseService.login(this.user)
+      .then(() => {
+        this.isAuthenticating = false;
+        this.routerExtensions.navigate(["/"], { clearHistory: true });
+
+      })
+      .catch((message: any) => {
+        this.isAuthenticating = false;
+      });
+  }
+
+  signUp() {
+    this.firebaseService.register(this.user)
+      .then(() => {
+        this.isAuthenticating = false;
+        this.toggleDisplay();
+        this.userService.addKalethanerToDatabase(this.user.email, this.neuerKalethaner)
+      })
+      .catch((message: any) => {
+        alert(message);
+        this.isAuthenticating = false;
+      });
+  }
+
+  forgotPassword() {
+    /*
+    prompt({
+      title: "Forgot Password",
+      message: "Enter the email address you used to register for Yowwlr to reset your password.",
+      defaultText: "",
+      okButtonText: "Ok",
+      cancelButtonText: "Cancel"
+    }).then((data) => {
+      if (data.result) {
+        this.firebaseService.resetPassword(data.text.trim())
+          .then((result: any) => {
+            if (result) {
+              alert(result);
+            }
+          });
+      }
+    });
+  */
+  }
+
+  toggleDisplay() {
+    this.isLoggingIn = !this.isLoggingIn;
+  }
+}
