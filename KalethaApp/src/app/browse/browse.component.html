@@ -18,7 +18,7 @@
 <FlexboxLayout flexDirection="column" justifyContent="space-between">
     <ScrollView>
         <FlexboxLayout flexDirection="column">
-            <FlexboxLayout *ngFor="let message of chat" justifyContent="space-between" flexDirection="row">
+            <FlexboxLayout *ngFor="let message of $chat | async" justifyContent="space-between" flexDirection="row">
                 <Label [text]="message.message"></Label>
                 <Label [text]="message.from"></Label>
             </FlexboxLayout>
@@ -26,6 +26,6 @@
     </ScrollView>
     <FlexboxLayout flexDirection="row">
         <TextField class="input input-border" width="80%" hint="Nachricht..." [(ngModel)]="neueNachricht"></TextField>
-        <Button text="send Message" class="text-center btn btn-primary" (tap)="sendMessage()"></Button>
+        <Button text="Senden" class="text-center btn btn-primary" (tap)="sendMessage()"></Button>
     </FlexboxLayout>
 </FlexboxLayout>

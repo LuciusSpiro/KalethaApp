@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-import { FirebaseService } from "../services/firebase.service";
 import { ChatService } from "../services/chat.service";
 import { Message } from "../models/message.model";
 import { UserService } from "../services/user.service";
-import { borderTopRightRadiusProperty } from "tns-core-modules/ui/page/page";
+import { Observable, Subject } from "rxjs";
+import { publish } from "rxjs/operators";
 
 @Component({
     selector: "Browse",
@@ -13,24 +13,25 @@ import { borderTopRightRadiusProperty } from "tns-core-modules/ui/page/page";
     templateUrl: "./browse.component.html"
 })
 export class BrowseComponent implements OnInit {
-    chat: Array<Message>;
+    $chat: Subject<Array<Message>>;
     neueNachricht: string;
-    constructor(private chatService: ChatService, private userService: UserService) {
-        // Use the component constructor to inject providers.
+    constructor(private chatService: ChatService, private userService: UserService, private zone: NgZone) {
+
     }
 
     ngOnInit(): void {
-        this.chat = [];
+        this.$chat = new Subject<Array<Message>>();
+
         this.chatService.subscribeToChat((snapshot) => {
             const chat = [];
             snapshot.forEach((doc) => {
                 chat.push(doc.data());
             });
+            this.zone.run(() => this.$chat.next(chat.sort((a, b) => this.compareMessages(a, b))));
 
-            this.chat = chat.sort((a, b) => this.compareMessages(a, b));
         });
         this.chatService.getAllMessagesFrom().then((chat: Array<Message>) => {
-            this.chat = chat.sort((a, b) => this.compareMessages(a, b));
+            this.$chat.next(chat.sort((a, b) => this.compareMessages(a, b)));
         });
     }
 
