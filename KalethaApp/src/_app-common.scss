@@ -4,6 +4,7 @@
 .fa {
     font-family: "FontAwesome";
 }
+
 // Common page class
 .page-content {
     .page-placeholder {
@@ -12,7 +13,6 @@
         vertical-align: center;
         horizontal-align: center;
     }
-
     .page-icon {
         font-size: 72;
         vertical-align: top;
@@ -22,23 +22,25 @@
     }
 }
 
+.action-bar {
+    margin-top: -22;
+}
+
 //Action bar
 ActionBar .action-bar-title {
     horizontal-align: center;
 }
 
- // Drawer navigation custom styles
+// Drawer navigation custom styles
 $sidedrawer-header-image-size: 60;
 $sidedrawer-header-image-offset-top: 20;
 $sidedrawer-header-image-offset-bottom: 5;
 $sidedrawer-list-item-offset-left: 15;
 $sidedrawer-list-icon-offset: 10;
 $sidedrawer-list-icon-size: 20;
-
 .sidedrawer {
     &.sidedrawer-left {
         background-color: $ab-background;
-
         .sidedrawer-header-image {
             color: $background-dark;
             height: $sidedrawer-header-image-size;
@@ -48,27 +50,21 @@ $sidedrawer-list-icon-size: 20;
             margin-bottom: $sidedrawer-header-image-offset-bottom;
             margin-top: $sidedrawer-header-image-offset-top;
         }
-
         .footnote {
             color: rgba($ab-color, 0.5);
         }
     }
-
     .sidedrawer-header {
         background-color: $ab-background;
-
         .sidedrawer-header-brand {
             color: $ab-color;
         }
     }
-
     .sidedrawer-content {
         background-color: $side-drawer-background;
-
         $sidedrawer-list-item-offset-left: 15;
         $sidedrawer-list-icon-offset: 10;
         $sidedrawer-list-icon-size: 20;
-
         .sidedrawer-list-item {
             padding-left: $sidedrawer-list-item-offset-left;
             Label {

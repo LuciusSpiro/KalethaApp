@@ -11,21 +11,20 @@
     -->
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
     </ActionItem>
-    <Label class="action-bar-title" text="Browse"></Label>
+    <Label class="action-bar-title" text="chat"></Label>
 </ActionBar>
 
 
 <FlexboxLayout flexDirection="column" justifyContent="space-between">
-    <ScrollView>
+    <ScrollView #chatScrollArea>
         <FlexboxLayout flexDirection="column">
-            <FlexboxLayout *ngFor="let message of $chat | async" justifyContent="space-between" flexDirection="row">
-                <Label [text]="message.message"></Label>
-                <Label [text]="message.from"></Label>
+            <FlexboxLayout *ngFor="let message of $chat | async" width="100%">
+                <Message [text]="message.message" [from]="message.from" [right]="isThisMyMessage(message)"></Message>
             </FlexboxLayout>
         </FlexboxLayout>
     </ScrollView>
-    <FlexboxLayout flexDirection="row">
-        <TextField class="input input-border" width="80%" hint="Nachricht..." [(ngModel)]="neueNachricht"></TextField>
-        <Button text="Senden" class="text-center btn btn-primary" (tap)="sendMessage()"></Button>
+    <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
+        <TextField class="input input-border" width="75%" hint="Nachricht..." [(ngModel)]="neueNachricht" (focus)="scrollDown()"></TextField>
+        <Button text="Senden" class="text-center btn btn-primary" (tap)="sendMessage()" width="25%"></Button>
     </FlexboxLayout>
 </FlexboxLayout>

@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from "@angular/core";
+import { Component, OnInit, NgZone, ViewChild, ElementRef } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { ChatService } from "../services/chat.service";
@@ -8,13 +8,15 @@ import { Observable, Subject } from "rxjs";
 import { publish } from "rxjs/operators";
 
 @Component({
-    selector: "Browse",
+    selector: "chat",
     moduleId: module.id,
-    templateUrl: "./browse.component.html"
+    templateUrl: "./chat.component.html"
 })
-export class BrowseComponent implements OnInit {
+export class ChatComponent implements OnInit {
     $chat: Subject<Array<Message>>;
     neueNachricht: string;
+
+    @ViewChild("chatScrollArea", { static: false }) chatScrollArea: ElementRef;
     constructor(private chatService: ChatService, private userService: UserService, private zone: NgZone) {
 
     }
@@ -29,6 +31,8 @@ export class BrowseComponent implements OnInit {
             });
             this.zone.run(() => this.$chat.next(chat.sort((a, b) => this.compareMessages(a, b))));
 
+            this.scrollDown();
+
         });
         this.chatService.getAllMessagesFrom().then((chat: Array<Message>) => {
             this.$chat.next(chat.sort((a, b) => this.compareMessages(a, b)));
@@ -41,6 +45,9 @@ export class BrowseComponent implements OnInit {
     }
 
     sendMessage(): void {
+        if (!this.neueNachricht) {
+            return;
+        }
         const message = {
             message: this.neueNachricht,
             from: this.userService.getCurrentUser().itName,
@@ -49,6 +56,10 @@ export class BrowseComponent implements OnInit {
         }
         this.chatService.sendMessage(message);
         this.neueNachricht = "";
+    }
+
+    isThisMyMessage(message: Message) {
+        return message.from === this.userService.getCurrentUser().itName;
     }
 
     compareMessages(a: Message, b: Message) {
@@ -60,5 +71,12 @@ export class BrowseComponent implements OnInit {
         }
 
         return 0;
+    }
+
+    scrollDown() {
+        setTimeout(() => {
+            this.chatScrollArea.nativeElement
+                .scrollToVerticalOffset(this.chatScrollArea.nativeElement.scrollableHeight, false)
+        }, 500);
     }
 }
