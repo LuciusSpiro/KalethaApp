@@ -1,21 +1,23 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 
-import { ChatRoutingModule } from "./chat-routing.module";
-import { ChatComponent } from "./chat.component";
+import { ChatRoomRoutingModule } from "./chatRoom-routing.module";
+import { ChatRoomComponent } from "./chatRoom.component";
 import { ChatService } from "../services/chat.service";
 import { NativeScriptFormsModule } from "nativescript-angular/forms/forms.module";
 import { MessageComponent } from "./message/message.component";
+import { ChatComponent } from "./chat/chat.component";
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
         NativeScriptFormsModule,
-        ChatRoutingModule
+        ChatRoomRoutingModule
     ],
     declarations: [
-        ChatComponent,
-        MessageComponent
+        ChatRoomComponent,
+        MessageComponent,
+        ChatComponent
     ],
     providers: [
         ChatService
@@ -24,4 +26,4 @@ import { MessageComponent } from "./message/message.component";
         NO_ERRORS_SCHEMA
     ]
 })
-export class ChatModule { }
+export class ChatRoomModule { }

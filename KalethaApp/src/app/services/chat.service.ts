@@ -7,14 +7,9 @@ const firebase = require("nativescript-plugin-firebase");
 
 @Injectable()
 export class ChatService {
-    constructor(
-
-    ) { }
 
     subscribeToChat(callBack: any) {
-        const chatCollection = firebase.firestore.collection("Chat");
-
-        chatCollection.onSnapshot(callBack);
+        firebase.firestore.collection("Chat").onSnapshot(callBack);
     }
 
     getAllMessagesFrom(): Promise<Array<Message>> {
@@ -29,7 +24,17 @@ export class ChatService {
     }
 
     sendMessage(message: Message) {
-        const chatCollection = firebase.firestore.collection("Chat");
-        chatCollection.add(message);
+        firebase.firestore.collection("Chat").add(message);
+    }
+
+    compareMessages(a: Message, b: Message) {
+        if (a.date < b.date) {
+            return -1;
+        }
+        if (a.date > b.date) {
+            return 1;
+        }
+
+        return 0;
     }
 }

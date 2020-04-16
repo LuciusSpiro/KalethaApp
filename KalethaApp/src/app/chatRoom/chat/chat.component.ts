@@ -1,18 +1,18 @@
-import { Component, OnInit, NgZone, ViewChild, ElementRef } from "@angular/core";
+import { Component, ViewChild, ElementRef, NgZone } from "@angular/core";
+import { Subject } from "rxjs";
+import { Message } from "~/app/models/message.model";
+import { ChatService } from "~/app/services/chat.service";
+import { UserService } from "~/app/services/user.service";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-import { ChatService } from "../services/chat.service";
-import { Message } from "../models/message.model";
-import { UserService } from "../services/user.service";
-import { Observable, Subject } from "rxjs";
-import { publish } from "rxjs/operators";
+
 
 @Component({
-    selector: "chat",
-    moduleId: module.id,
-    templateUrl: "./chat.component.html"
+    selector: "Chat",
+    templateUrl: "./chat.component.html",
+    styleUrls: ["./chat.Component.scss"]
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent {
     $chat: Subject<Array<Message>>;
     neueNachricht: string;
 
@@ -29,13 +29,10 @@ export class ChatComponent implements OnInit {
             snapshot.forEach((doc) => {
                 chat.push(doc.data());
             });
-            this.zone.run(() => this.$chat.next(chat.sort((a, b) => this.compareMessages(a, b))));
+
+            this.zone.run(() => this.$chat.next(chat.sort((a, b) => this.chatService.compareMessages(a, b))));
 
             this.scrollDown();
-
-        });
-        this.chatService.getAllMessagesFrom().then((chat: Array<Message>) => {
-            this.$chat.next(chat.sort((a, b) => this.compareMessages(a, b)));
         });
     }
 
@@ -62,16 +59,7 @@ export class ChatComponent implements OnInit {
         return message.from === this.userService.getCurrentUser().itName;
     }
 
-    compareMessages(a: Message, b: Message) {
-        if (a.date < b.date) {
-            return -1;
-        }
-        if (a.date > b.date) {
-            return 1;
-        }
 
-        return 0;
-    }
 
     scrollDown() {
         setTimeout(() => {
