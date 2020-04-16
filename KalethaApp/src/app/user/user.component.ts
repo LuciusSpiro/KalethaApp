@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../services/user.service";
-import { IKalethaner } from "../models/kalethaner.model";
+import { Kalethaner } from "../models/kalethaner.model";
 
 /* ***********************************************************
 * Before you can navigate to this page from your app, you need to reference this page's module in the
@@ -15,7 +15,7 @@ import { IKalethaner } from "../models/kalethaner.model";
     templateUrl: "./user.component.html"
 })
 export class UserComponent implements OnInit {
-    kalethaner: IKalethaner;
+    kalethaner: Kalethaner;
 
     constructor(private userService: UserService) {
     }

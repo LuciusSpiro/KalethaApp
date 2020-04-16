@@ -7,8 +7,8 @@ https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawe
     <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
         <StackLayout row="0" class="sidedrawer-header" (tap)="onNavItemTap('/user')">
             <Label class="sidedrawer-header-image fa" text="&#xf2bd;"></Label>
-            <Label class="sidedrawer-header-brand" [text]="getKalethanerITName()"></Label>
-            <Label class="footnote" [text]="getKalethanerOTName()"></Label>
+            <Label class="sidedrawer-header-brand" [text]="getKalethanerOTName()"></Label>
+            <!--Label class="footnote" [text]="getKalethanerOTName()"></Label-->
         </StackLayout>
 
         <ScrollView row="1" class="sidedrawer-content">

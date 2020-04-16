@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { User } from "../models/user.model";
-import { IKalethaner } from "../models/kalethaner.model";
+import { Kalethaner } from "../models/kalethaner.model";
 
 const firebase = require("nativescript-plugin-firebase");
 
@@ -8,7 +8,7 @@ const firebase = require("nativescript-plugin-firebase");
     providedIn: "root"
 })
 export class UserService {
-    private currentUser: IKalethaner;
+    private currentUser: Kalethaner;
     constructor(
 
     ) { }
@@ -22,12 +22,12 @@ export class UserService {
         });
     }
 
-    getCurrentUser(): IKalethaner {
+    getCurrentUser(): Kalethaner {
         if (this.currentUser) {
             return this.currentUser;
         }
 
-        return { itName: "", otName: "", rang: "" }
+        return { otName: "", characters: [], level: 0 }
     }
 
     fetchCurrentUser(): Promise<void> {
@@ -39,7 +39,7 @@ export class UserService {
             .catch((error) => console.log("user not found" + error));
     }
 
-    addKalethanerToDatabase(email: string, neuerKalethaner: IKalethaner): void {
+    addKalethanerToDatabase(email: string, neuerKalethaner: Kalethaner): void {
         const kalethanersCollection = firebase.firestore.collection("Kalethaner");
         kalethanersCollection.doc(email).set(neuerKalethaner);
         this.currentUser = neuerKalethaner;

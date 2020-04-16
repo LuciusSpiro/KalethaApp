@@ -47,7 +47,7 @@ export class ChatComponent {
         }
         const message = {
             message: this.neueNachricht,
-            from: this.userService.getCurrentUser().itName,
+            from: this.userService.getCurrentUser().otName,
             to: "all",
             date: new Date().toISOString()
         }
@@ -56,7 +56,7 @@ export class ChatComponent {
     }
 
     isThisMyMessage(message: Message) {
-        return message.from === this.userService.getCurrentUser().itName;
+        return message.from === this.userService.getCurrentUser().otName;
     }
 
 

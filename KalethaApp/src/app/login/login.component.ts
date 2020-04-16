@@ -3,7 +3,7 @@ import { User } from "../models/user.model";
 import { RouterExtensions } from "nativescript-angular/router/router-extensions";
 import { FirebaseService } from "../services/firebase.service";
 import { UserService } from "../services/user.service";
-import { IKalethaner } from "../models/kalethaner.model";
+import { Kalethaner } from "../models/kalethaner.model";
 
 @Component({
   moduleId: module.id,
@@ -12,7 +12,7 @@ import { IKalethaner } from "../models/kalethaner.model";
 })
 export class LoginComponent {
   user: User;
-  neuerKalethaner: IKalethaner;
+  neuerKalethaner: Kalethaner;
   isLoggingIn = true;
   isAuthenticating = false;
 
@@ -25,9 +25,9 @@ export class LoginComponent {
     this.user.password = "";
 
     this.neuerKalethaner = {
-      itName: "",
       otName: "",
-      rang: "kalethaner"
+      characters: [],
+      level: 0
     };
   }
 

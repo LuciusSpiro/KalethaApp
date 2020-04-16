@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { User } from "../models/user.model";
-import { IKalethaner } from "../models/kalethaner.model";
+import { Kalethaner } from "../models/kalethaner.model";
 import { Message } from "../models/message.model";
 
 const firebase = require("nativescript-plugin-firebase");

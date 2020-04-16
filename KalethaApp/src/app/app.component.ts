@@ -6,7 +6,7 @@ import { filter } from "rxjs/operators";
 import * as app from "tns-core-modules/application";
 import { BackendService } from "./services/backend.service";
 import { UserService } from "./services/user.service";
-import { IKalethaner } from "./models/kalethaner.model";
+import { Kalethaner } from "./models/kalethaner.model";
 
 const firebase = require("nativescript-plugin-firebase");
 
@@ -89,10 +89,6 @@ export class AppComponent implements OnInit {
                 this.userService.fetchCurrentUser();
             }
         );
-    }
-
-    getKalethanerITName(): string {
-        return this.userService.getCurrentUser().itName;
     }
 
     getKalethanerOTName(): string {
