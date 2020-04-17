@@ -12,9 +12,19 @@
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
     </ActionItem>
     <Label class="action-bar-title" text="conManagement"></Label>
+
 </ActionBar>
 
-<GridLayout class="page page-content">
-    <Label class="page-icon fa" text="&#xf002;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
-</GridLayout>
+<FlexboxLayout flexDirection="column" justifyContent="space-between">
+    <ScrollView>
+        <FlexboxLayout flexDirection="column">
+            <FlexboxLayout *ngFor="let con of getCons()" width="100%">
+                <ConEntry [con]="con"></ConEntry>
+            </FlexboxLayout>
+        </FlexboxLayout>
+    </ScrollView>
+    <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
+        <Label width="75%"></Label>
+        <Button text="+" class="text-center btn btn-primary" [nsRouterLink]="['./edit/new']" width="25%"></Button>
+    </FlexboxLayout>
+</FlexboxLayout>

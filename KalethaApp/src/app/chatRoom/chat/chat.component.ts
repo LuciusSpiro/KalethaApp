@@ -65,6 +65,6 @@ export class ChatComponent {
         setTimeout(() => {
             this.chatScrollArea.nativeElement
                 .scrollToVerticalOffset(this.chatScrollArea.nativeElement.scrollableHeight, false)
-        }, 500);
+        }, 300);
     }
 }

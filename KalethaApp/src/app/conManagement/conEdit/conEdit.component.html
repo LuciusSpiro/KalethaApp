@@ -1,0 +1,32 @@
+<ActionBar class="action-bar">
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" text="Conbearbeitung"></Label>
+</ActionBar>
+
+
+
+
+<FlexboxLayout flexDirection="column" justifyContent="space-between">
+    <ScrollView>
+        <StackLayout class="card">
+            <Image *ngIf="isLoggingIn" class="logo" src="res://logo" stretch="none" horizontalAlignment="center"></Image>
+            <StackLayout [class]="isLoggingIn ? 'form white' : 'form gold'">
+                <TextField class="input input-border" hint="Name" [(ngModel)]="convention.name"></TextField>
+                <TextField class="input input-border" hint="Datum" [(ngModel)]="convention.date" keyboardType="datetime"></TextField>
+                <TextField class="input input-border" hint="Link zur Con" [(ngModel)]="convention.conLink"></TextField>
+                <TextField class="input input-border" hint="Planungsdokument" [(ngModel)]="convention.planDoc"></TextField>
+                <TextField class="input input-border" hint="Beschreibung" [(ngModel)]="convention.description"></TextField>
+
+
+                <!--Button horizontalAlignment="center" class="btn" text="Forgot password" (tap)="forgotPassword()" [opacity]="isLoggingIn ? 1 : 0"></Button-->
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+    <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
+        <Button text="Verwerfen" class="text-center btn" width="50%" (tap)="dismiss()"></Button>
+        <Button text="Fertig" class="text-center btn btn-primary" width="50%" (tap)="submit()"></Button>
+    </FlexboxLayout>
+</FlexboxLayout>
