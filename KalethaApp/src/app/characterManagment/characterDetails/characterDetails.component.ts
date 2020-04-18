@@ -6,11 +6,11 @@ import * as app from "tns-core-modules/application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 
 @Component({
-    selector: "ConMain",
-    templateUrl: "./conMain.component.html",
-    styleUrls: ["./conMain.Component.scss"]
+    selector: "CharacterDetails",
+    templateUrl: "./characterDetails.component.html",
+    styleUrls: ["./characterDetails.Component.scss"]
 })
-export class ConMainComponent implements OnInit {
+export class CharacterDetailsComponent implements OnInit {
     convention: Con;
     conName: string;
 
@@ -26,5 +26,4 @@ export class ConMainComponent implements OnInit {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
     }
-
 }

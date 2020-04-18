@@ -7,11 +7,11 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 
 @Component({
-    selector: "ConEdit",
-    templateUrl: "./conEdit.component.html",
-    styleUrls: ["./conEdit.Component.scss"]
+    selector: "CharacterEdit",
+    templateUrl: "./characternEdit.component.html",
+    styleUrls: ["./characterEdit.Component.scss"]
 })
-export class ConEditComponent implements OnInit {
+export class CharacterEditComponent implements OnInit {
     convention: Con;
     conName: string;
 
@@ -19,6 +19,7 @@ export class ConEditComponent implements OnInit {
         private route: ActivatedRoute,
         private conService: ConService,
         private routerExtensions: RouterExtensions) {
+        // Use the component constructor to inject providers.
     }
 
     ngOnInit(): void {

@@ -9,9 +9,6 @@ const firebase = require("nativescript-plugin-firebase");
 })
 export class UserService {
     private currentUser: Kalethaner;
-    constructor(
-
-    ) { }
 
     getAllUser() {
         const userCollection = firebase.firestore.collection("Kalethaner");
@@ -27,13 +24,13 @@ export class UserService {
             return this.currentUser;
         }
 
-        return { otName: "", characters: [], level: 0 }
+        return { otName: "", characters: [], level: 0 };
     }
 
     fetchCurrentUser(): Promise<void> {
         return firebase.getCurrentUser()
             .then((user: User) => {
-                return firebase.firestore.collection("Kalethaner").doc(user.email).get({ source: "server" })
+                return firebase.firestore.collection("Kalethaner").doc(user.email).get({ source: "server" });
             })
             .then((doc) => this.currentUser = doc.data())
             .catch((error) => console.log("user not found" + error));

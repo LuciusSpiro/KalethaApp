@@ -1,6 +1,36 @@
-<FlexboxLayout class="message">
+<ActionBar class="action-bar">
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
 
-    <Label class="message__text" text="conDetails"></Label>
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" text="Conbearbeitung"></Label>
+</ActionBar>
+<FlexboxLayout class="con-details">
+
+    <FlexboxLayout class="con-details__box">
+        <Label class="message__text" [text]="convention.name"></Label>
+    </FlexboxLayout>
+    <FlexboxLayout class="con-details__box">
+        <Label class="message__text" [text]="convention.date"></Label>
+    </FlexboxLayout>
+    <FlexboxLayout class="con-details__box con-details__box--big">
+        <ScrollView>
+            <FlexboxLayout class="con-details__box">
+                <Label class="message__text" text="Beschreibung"></Label>
+                <Label class="message__text" [text]="convention.description"></Label>
+            </FlexboxLayout>
+        </ScrollView>
+    </FlexboxLayout>
+
+    <FlexboxLayout class="con-details__box">
+        <Label class="message__text" text="Link zur Con:"></Label>
+        <Label class="message__text" [text]="convention.conLink"></Label>
+    </FlexboxLayout>
+    <FlexboxLayout class="con-details__box">
+        <Label text="Kann nicht" class="text-center btn" (tap)="dismiss()"></Label>
+        <Label text="Interessiert" class="text-center btn" (tap)="dismiss()"></Label>
+        <Label text="Nehme Teil" class="text-center btn btn-primary" (tap)="submit()"></Label>
+    </FlexboxLayout>
 
 
 </FlexboxLayout>

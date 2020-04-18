@@ -1,18 +1,17 @@
-import { Component, ViewChild, ElementRef, NgZone } from "@angular/core";
+import { Component, ViewChild, ElementRef, NgZone, OnInit } from "@angular/core";
 import { Subject } from "rxjs";
 import { Message } from "~/app/models/message.model";
-import { ChatService } from "~/app/services/chat.service";
+import { ChatService } from "~/app/components/chat/chat.service";
 import { UserService } from "~/app/services/user.service";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-
 
 @Component({
     selector: "Chat",
     templateUrl: "./chat.component.html",
     styleUrls: ["./chat.Component.scss"]
 })
-export class ChatComponent {
+export class ChatComponent implements OnInit {
     $chat: Subject<Array<Message>>;
     neueNachricht: string;
 
@@ -50,7 +49,7 @@ export class ChatComponent {
             from: this.userService.getCurrentUser().otName,
             to: "all",
             date: new Date().toISOString()
-        }
+        };
         this.chatService.sendMessage(message);
         this.neueNachricht = "";
     }
@@ -59,12 +58,10 @@ export class ChatComponent {
         return message.from === this.userService.getCurrentUser().otName;
     }
 
-
-
     scrollDown() {
         setTimeout(() => {
             this.chatScrollArea.nativeElement
-                .scrollToVerticalOffset(this.chatScrollArea.nativeElement.scrollableHeight, false)
+                .scrollToVerticalOffset(this.chatScrollArea.nativeElement.scrollableHeight, false);
         }, 300);
     }
 }

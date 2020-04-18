@@ -1,4 +1,4 @@
-.con-details {
+.character-details {
     width: 100%;
     flex-direction: column;
     &__box {
@@ -8,8 +8,8 @@
         flex-direction: row;
         justify-content: space-around;
         flex-shrink: 0;
-        &--big {
-            flex-grow: 1;
-        }
+    }
+    &__chat {
+        flex-grow: 1;
     }
 }

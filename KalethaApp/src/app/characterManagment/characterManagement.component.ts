@@ -1,17 +1,19 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-import { ConService } from "./convention.service";
+import { ConService } from "../conManagement/convention.service";
 import { Con } from "../models/convention.model";
 
 @Component({
-    selector: "conManagement",
+    selector: "CharacterManagement",
     moduleId: module.id,
-    templateUrl: "./conManagement.component.html"
+    templateUrl: "./characterManagement.component.html"
 })
-export class ConManagementComponent implements OnInit {
+export class CharacterManagementComponent implements OnInit {
     cons: Array<Con>;
-    constructor(private conService: ConService) { }
+    constructor(private conService: ConService) {
+        // Use the component constructor to inject providers.
+    }
 
     ngOnInit(): void {
         if (!this.cons) {
@@ -27,4 +29,5 @@ export class ConManagementComponent implements OnInit {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
     }
+
 }

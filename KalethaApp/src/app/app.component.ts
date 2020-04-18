@@ -4,9 +4,8 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
 import { filter } from "rxjs/operators";
 import * as app from "tns-core-modules/application";
-import { BackendService } from "./services/backend.service";
+import { LoginService } from "./login/login.service";
 import { UserService } from "./services/user.service";
-import { Kalethaner } from "./models/kalethaner.model";
 
 const firebase = require("nativescript-plugin-firebase");
 
@@ -23,9 +22,9 @@ export class AppComponent implements OnInit {
     private _activatedUrl: string;
     private _sideDrawerTransition: DrawerTransitionBase;
 
-    constructor(private router: Router,
+    constructor(
+        private router: Router,
         private routerExtensions: RouterExtensions,
-        private backendService: BackendService,
         private userService: UserService) {
     }
 
@@ -38,8 +37,6 @@ export class AppComponent implements OnInit {
             .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
 
         this.initFirebase();
-
-
     }
 
     isComponentSelected(url: string): boolean {
@@ -74,9 +71,9 @@ export class AppComponent implements OnInit {
             // storageBucket: 'gs://yowwlr.appspot.com',
             onAuthStateChanged: (data: any) => {
                 if (data.loggedIn) {
-                    BackendService.token = data.user.uid;
+                    LoginService.token = data.user.uid;
                 } else {
-                    BackendService.token = "";
+                    LoginService.token = "";
                 }
             }
         }).then(
@@ -96,7 +93,7 @@ export class AppComponent implements OnInit {
     }
 
     logout(): void {
-        BackendService.token = "";
+        LoginService.token = "";
         this.onNavItemTap("/login");
     }
 }

@@ -7,16 +7,16 @@
 
 </ActionBar>
 
-<FlexboxLayout class="con-main">
+<FlexboxLayout class="character-details">
 
-    <FlexboxLayout class="con-main__box" [nsRouterLink]="['../../details/' + convention.name]">
+    <FlexboxLayout class="character-details__box" [nsRouterLink]="['../../details/' + convention.name]">
         <Label class="message__text" [text]="convention.name"></Label>
     </FlexboxLayout>
-    <FlexboxLayout class="con-main__box">
+    <FlexboxLayout class="character-details__box">
         <Label class="message__text" [text]="Planungsdokument"></Label>
         <Button text="Edit" class="text-center btn" [nsRouterLink]="['../../edit/' + convention.name ]" width="25%"></Button>
     </FlexboxLayout>
-    <FlexboxLayout class="con-main__box">
+    <FlexboxLayout class="character-details__box">
         <Label class="message__text" text="Teilnehmer"></Label>
         <Label class="message__text" [text]="convention.members?.length || 0"></Label>
     </FlexboxLayout>

@@ -4,8 +4,7 @@ import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angul
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { BackendService } from "./services/backend.service";
-import { FirebaseService } from "./services/firebase.service";
+import { LoginService } from "./login/login.service";
 import { UserService } from "./services/user.service";
 
 @NgModule({
@@ -18,8 +17,7 @@ import { UserService } from "./services/user.service";
         NativeScriptUISideDrawerModule
     ],
     providers: [
-        BackendService,
-        FirebaseService,
+        LoginService,
         UserService
     ],
     declarations: [

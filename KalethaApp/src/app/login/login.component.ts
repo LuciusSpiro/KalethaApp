@@ -1,14 +1,14 @@
 import { Component } from "@angular/core";
 import { User } from "../models/user.model";
 import { RouterExtensions } from "nativescript-angular/router/router-extensions";
-import { FirebaseService } from "../services/firebase.service";
 import { UserService } from "../services/user.service";
 import { Kalethaner } from "../models/kalethaner.model";
+import { LoginService } from "./login.service";
 
 @Component({
+  selector: "login",
   moduleId: module.id,
-  selector: "yw-login",
-  templateUrl: "login.html"
+  templateUrl: "./login.component.html"
 })
 export class LoginComponent {
   user: User;
@@ -16,7 +16,8 @@ export class LoginComponent {
   isLoggingIn = true;
   isAuthenticating = false;
 
-  constructor(private firebaseService: FirebaseService,
+  constructor(
+    private loginService: LoginService,
     private routerExtensions: RouterExtensions,
     private userService: UserService
   ) {
@@ -41,7 +42,7 @@ export class LoginComponent {
   }
 
   login() {
-    this.firebaseService.login(this.user)
+    this.loginService.login(this.user)
       .then(() => {
         this.isAuthenticating = false;
 
@@ -56,37 +57,16 @@ export class LoginComponent {
   }
 
   signUp() {
-    this.firebaseService.register(this.user)
+    this.loginService.register(this.user)
       .then(() => {
         this.isAuthenticating = false;
         this.toggleDisplay();
-        this.userService.addKalethanerToDatabase(this.user.email, this.neuerKalethaner)
+        this.userService.addKalethanerToDatabase(this.user.email, this.neuerKalethaner);
       })
       .catch((message: any) => {
         alert(message);
         this.isAuthenticating = false;
       });
-  }
-
-  forgotPassword() {
-    /*
-    prompt({
-      title: "Forgot Password",
-      message: "Enter the email address you used to register for Yowwlr to reset your password.",
-      defaultText: "",
-      okButtonText: "Ok",
-      cancelButtonText: "Cancel"
-    }).then((data) => {
-      if (data.result) {
-        this.firebaseService.resetPassword(data.text.trim())
-          .then((result: any) => {
-            if (result) {
-              alert(result);
-            }
-          });
-      }
-    });
-  */
   }
 
   toggleDisplay() {
