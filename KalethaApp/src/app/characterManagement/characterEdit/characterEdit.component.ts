@@ -5,40 +5,41 @@ import { ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
+import { Character } from "~/app/models/character.model";
+import { CharacterService } from "../character.service";
 
 @Component({
     selector: "CharacterEdit",
-    templateUrl: "./characternEdit.component.html",
+    templateUrl: "./characterEdit.component.html",
     styleUrls: ["./characterEdit.Component.scss"]
 })
 export class CharacterEditComponent implements OnInit {
-    convention: Con;
-    conName: string;
+    character: Character;
+    characterItName: string;
 
     constructor(
         private route: ActivatedRoute,
-        private conService: ConService,
+        private characterService: CharacterService,
         private routerExtensions: RouterExtensions) {
-        // Use the component constructor to inject providers.
     }
 
     ngOnInit(): void {
-        this.conName = this.route.snapshot.params.id;
-        if (this.conName === "new") {
-            this.convention = new Con();
+        this.characterItName = this.route.snapshot.params.id;
+        if (this.characterItName === "new") {
+            this.character = new Character();
         } else {
-            this.convention = this.conService.getCon(this.conName);
+            this.character = this.characterService.getCharacter(this.characterItName);
         }
     }
 
     submit(): void {
-        if (this.conName === "new") {
-            this.conService.addCon(this.convention);
+        if (this.characterItName === "new") {
+            this.characterService.addCharacter(this.character);
         } else {
-            this.conService.updateCon(this.convention);
+            this.characterService.updateCharacter(this.character);
         }
 
-        this.routerExtensions.navigate(["./conManagement/main/" + this.convention.name]);
+        this.routerExtensions.navigate(["./characterManagement/details/" + this.character.itName]);
     }
 
     dismiss(): void {

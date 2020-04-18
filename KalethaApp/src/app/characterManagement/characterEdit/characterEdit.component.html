@@ -11,12 +11,9 @@
         <StackLayout class="card">
             <Image *ngIf="isLoggingIn" class="logo" src="res://logo" stretch="none" horizontalAlignment="center"></Image>
             <StackLayout [class]="isLoggingIn ? 'form white' : 'form gold'">
-                <Label class="input input-border" [text]="convention.name" *ngIf="conName !== 'new'"></Label>
-                <TextField class="input input-border" hint="Name" [(ngModel)]="convention.name" *ngIf="conName === 'new'"></TextField>
-                <TextField class="input input-border" hint="Datum" [(ngModel)]="convention.date" keyboardType="datetime"></TextField>
-                <TextField class="input input-border" hint="Link zur Con" [(ngModel)]="convention.conLink"></TextField>
-                <TextField class="input input-border" hint="Planungsdokument" [(ngModel)]="convention.planDoc"></TextField>
-                <TextField class="input input-border" hint="Beschreibung" [(ngModel)]="convention.description"></TextField>
+                <Label class="input input-border" [text]="character.name" *ngIf="characterItName !== 'new'"></Label>
+                <TextField class="input input-border" hint="IT Name" [(ngModel)]="character.itName" *ngIf="characterItName === 'new'"></TextField>
+                <TextField class="input input-border" hint="Beschreibung" [(ngModel)]="character.description"></TextField>
             </StackLayout>
         </StackLayout>
     </ScrollView>

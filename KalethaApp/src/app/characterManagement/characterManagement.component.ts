@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-import { ConService } from "../conManagement/convention.service";
-import { Con } from "../models/convention.model";
+import { CharacterService } from "./character.service";
+import { Character } from "../models/character.model";
 
 @Component({
     selector: "CharacterManagement",
@@ -10,19 +10,17 @@ import { Con } from "../models/convention.model";
     templateUrl: "./characterManagement.component.html"
 })
 export class CharacterManagementComponent implements OnInit {
-    cons: Array<Con>;
-    constructor(private conService: ConService) {
-        // Use the component constructor to inject providers.
-    }
+    cons: Array<Character>;
+    constructor(private characterService: CharacterService) { }
 
     ngOnInit(): void {
         if (!this.cons) {
-            this.conService.init();
+            this.characterService.init();
         }
     }
 
-    getCons(): Array<Con> {
-        return this.conService.conList;
+    getCharacters(): Array<Character> {
+        return this.characterService.characterList;
     }
 
     onDrawerButtonTap(): void {

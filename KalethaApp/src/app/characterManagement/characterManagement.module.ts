@@ -28,4 +28,4 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
         NO_ERRORS_SCHEMA
     ]
 })
-export class CharaManagementModule { }
+export class CharacterManagementModule { }

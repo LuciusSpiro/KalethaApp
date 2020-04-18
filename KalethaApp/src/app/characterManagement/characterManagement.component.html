@@ -3,14 +3,15 @@
 
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
     </ActionItem>
-    <Label class="action-bar-title" text="conManagement"></Label>
+    <Label class="action-bar-title" text="CharackterManagement"></Label>
 </ActionBar>
 
 <FlexboxLayout flexDirection="column" justifyContent="space-between">
     <ScrollView>
         <FlexboxLayout flexDirection="column">
-            <FlexboxLayout *ngFor="let con of getCons()" width="100%">
-                <ConEntry [con]="con"></ConEntry>
+            <FlexboxLayout *ngFor="let character of getCharacters()" width="100%">
+                <CharacterEntry [character]="character">
+                </CharacterEntry>
             </FlexboxLayout>
         </FlexboxLayout>
     </ScrollView>

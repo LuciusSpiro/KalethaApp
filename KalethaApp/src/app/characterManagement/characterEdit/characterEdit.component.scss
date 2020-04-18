@@ -1,11 +1,5 @@
 .message {
     width: 100%;
-    &--right {
-        justify-content: flex-end;
-        &__box {
-            align-items: flex-end;
-        }
-    }
     &__box {
         border: 1px solid #000000;
         border-radius: 10px;

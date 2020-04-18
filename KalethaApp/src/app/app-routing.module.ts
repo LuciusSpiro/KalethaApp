@@ -8,7 +8,10 @@ const routes: Routes = [
     { path: "home", loadChildren: "~/app/home/home.module#HomeModule", canActivate: [AuthGuard] },
     { path: "chatRoom", loadChildren: "~/app/chatRoom/chatRoom.module#ChatRoomModule" },
     { path: "conManagement", loadChildren: "~/app/conManagement/conManagement.module#ConManagementModule" },
-    { path: "featured", loadChildren: "~/app/featured/featured.module#FeaturedModule" },
+    {
+        path: "characterManagement",
+        loadChildren: "~/app/characterManagement/characterManagement.module#CharacterManagementModule"
+    },
     { path: "settings", loadChildren: "~/app/settings/settings.module#SettingsModule" },
     { path: "login", loadChildren: "~/app/login/login.module#LoginModule" },
     { path: "user", loadChildren: "~/app/user/user.module#UserModule" }
