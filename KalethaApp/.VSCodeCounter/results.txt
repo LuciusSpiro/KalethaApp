@@ -1,0 +1,171 @@
+Date : 2020-04-19 00:34:21
+Directory : c:\Users\Lucius Spiro\KalethaApp\KalethaApp
+Total : 105 files,  10151 codes, 233 comments, 361 blanks, all 10745 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |         17 |      8,018 |         66 |          7 |      8,091 |
+| TypeScript |         47 |      1,132 |         38 |        231 |      1,401 |
+| HTML       |         17 |        280 |         25 |         37 |        342 |
+| SCSS       |         13 |        271 |         27 |         27 |        325 |
+| JavaScript |          1 |        244 |         62 |         14 |        320 |
+| XML        |          7 |        134 |          7 |         21 |        162 |
+| Groovy     |          2 |         60 |          8 |         20 |         88 |
+| Properties |          1 |         12 |          0 |          4 |         16 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                         | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                            |        105 |     10,151 |        233 |        361 |     10,745 |
+| App_Resources                                                                                                                |         16 |        613 |         15 |         41 |        669 |
+| App_Resources\Android                                                                                                        |         10 |        175 |         14 |         40 |        229 |
+| App_Resources\Android\src                                                                                                    |          6 |         82 |          6 |         20 |        108 |
+| App_Resources\Android\src\main                                                                                               |          6 |         82 |          6 |         20 |        108 |
+| App_Resources\Android\src\main\res                                                                                           |          5 |         65 |          6 |         14 |         85 |
+| App_Resources\Android\src\main\res\drawable-nodpi                                                                            |          1 |          8 |          0 |          0 |          8 |
+| App_Resources\Android\src\main\res\values                                                                                    |          2 |         35 |          3 |         10 |         48 |
+| App_Resources\Android\src\main\res\values-v21                                                                                |          2 |         22 |          3 |          4 |         29 |
+| App_Resources\iOS                                                                                                            |          6 |        438 |          1 |          1 |        440 |
+| App_Resources\iOS\Assets.xcassets                                                                                            |          5 |        386 |          0 |          0 |        386 |
+| App_Resources\iOS\Assets.xcassets\AppIcon.appiconset                                                                         |          1 |        122 |          0 |          0 |        122 |
+| App_Resources\iOS\Assets.xcassets\LaunchImage.launchimage                                                                    |          1 |        212 |          0 |          0 |        212 |
+| App_Resources\iOS\Assets.xcassets\LaunchScreen.AspectFill.imageset                                                           |          1 |         23 |          0 |          0 |         23 |
+| App_Resources\iOS\Assets.xcassets\LaunchScreen.Center.imageset                                                               |          1 |         23 |          0 |          0 |         23 |
+| src                                                                                                                          |         78 |      1,690 |         90 |        296 |      2,076 |
+| src\app                                                                                                                      |         72 |      1,544 |         62 |        265 |      1,871 |
+| src\app\characterManagement                                                                                                  |         14 |        314 |          0 |         50 |        364 |
+| src\app\characterManagement\characterDetails                                                                                 |          3 |         59 |          0 |         10 |         69 |
+| src\app\characterManagement\characterEdit                                                                                    |          3 |         80 |          0 |         10 |         90 |
+| src\app\characterManagement\characterEntry                                                                                   |          3 |         28 |          0 |          2 |         30 |
+| src\app\chatRoom                                                                                                             |          4 |         58 |          0 |         11 |         69 |
+| src\app\components                                                                                                           |          8 |        178 |          0 |         27 |        205 |
+| src\app\components\chat                                                                                                      |          8 |        178 |          0 |         27 |        205 |
+| src\app\components\chat\message                                                                                              |          3 |         35 |          0 |          3 |         38 |
+| src\app\conManagement                                                                                                        |         17 |        398 |          0 |         60 |        458 |
+| src\app\conManagement\conDetails                                                                                             |          3 |         70 |          0 |         10 |         80 |
+| src\app\conManagement\conEdit                                                                                                |          3 |         87 |          0 |         10 |         97 |
+| src\app\conManagement\conEntry                                                                                               |          3 |         29 |          0 |          2 |         31 |
+| src\app\conManagement\conMain                                                                                                |          3 |         60 |          0 |         12 |         72 |
+| src\app\home                                                                                                                 |          4 |         58 |         11 |         13 |         82 |
+| src\app\login                                                                                                                |          5 |        163 |          1 |         29 |        193 |
+| src\app\models                                                                                                               |          6 |         38 |         22 |          9 |         69 |
+| src\app\services                                                                                                             |          1 |         37 |          0 |          8 |         45 |
+| src\app\settings                                                                                                             |          4 |         58 |         11 |         13 |         82 |
+| src\app\user                                                                                                                 |          4 |         57 |          6 |         12 |         75 |
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                     | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\.editorconfig                                                                    | Properties |         12 |          0 |          4 |         16 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\Android\app.gradle                                                 | Groovy     |         20 |          8 |          8 |         36 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\Android\google-services.json                                       | JSON       |         32 |          0 |          0 |         32 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\Android\settings.gradle                                            | Groovy     |         40 |          0 |         12 |         52 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\Android\settings.json                                              | JSON       |          1 |          0 |          0 |          1 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\Android\src\main\AndroidManifest.xml                               | XML        |         17 |          0 |          6 |         23 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\Android\src\main\res\drawable-nodpi\splash_screen.xml              | XML        |          8 |          0 |          0 |          8 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\Android\src\main\res\values-v21\colors.xml                         | XML        |          4 |          0 |          0 |          4 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\Android\src\main\res\values-v21\styles.xml                         | XML        |         18 |          3 |          4 |         25 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\Android\src\main\res\values\colors.xml                             | XML        |          7 |          0 |          0 |          7 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\Android\src\main\res\values\styles.xml                             | XML        |         28 |          3 |         10 |         41 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\iOS\Assets.xcassets\AppIcon.appiconset\Contents.json               | JSON       |        122 |          0 |          0 |        122 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\iOS\Assets.xcassets\Contents.json                                  | JSON       |          6 |          0 |          0 |          6 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\iOS\Assets.xcassets\LaunchImage.launchimage\Contents.json          | JSON       |        212 |          0 |          0 |        212 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\iOS\Assets.xcassets\LaunchScreen.AspectFill.imageset\Contents.json | JSON       |         23 |          0 |          0 |         23 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\iOS\Assets.xcassets\LaunchScreen.Center.imageset\Contents.json     | JSON       |         23 |          0 |          0 |         23 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\App_Resources\iOS\LaunchScreen.storyboard                                        | XML        |         52 |          1 |          1 |         54 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\angular.json                                                                     | JSON       |         17 |          0 |          1 |         18 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\firebase.nativescript.json                                                       | JSON       |         21 |          0 |          0 |         21 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\nsconfig.json                                                                    | JSON       |          5 |          0 |          1 |          6 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\package-lock.json                                                                | JSON       |      7,470 |          0 |          1 |      7,471 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\package.json                                                                     | JSON       |         47 |          0 |          1 |         48 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\_app-common.scss                                                             | SCSS       |         76 |          6 |          4 |         86 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\_app-variables.scss                                                          | SCSS       |         46 |         13 |         17 |         76 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app.android.scss                                                             | SCSS       |          7 |          4 |          3 |         14 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app.ios.scss                                                                 | SCSS       |          7 |          4 |          3 |         14 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\app-routing.module.ts                                                    | TypeScript |         23 |          0 |          3 |         26 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\app.component.html                                                       | HTML       |         38 |          6 |          8 |         52 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\app.component.ts                                                         | TypeScript |         81 |          5 |         14 |        100 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\app.module.ts                                                            | TypeScript |         28 |          0 |          3 |         31 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\auth-guard.service.ts                                                    | TypeScript |         15 |          0 |          5 |         20 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\character.service.ts                                 | TypeScript |         56 |          0 |         13 |         69 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterDetails\characterDetails.component.html     | HTML       |         19 |          0 |          5 |         24 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterDetails\characterDetails.component.scss     | SCSS       |         15 |          0 |          0 |         15 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterDetails\characterDetails.component.ts       | TypeScript |         25 |          0 |          5 |         30 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterEdit\characterEdit.component.html           | HTML       |         22 |          0 |          2 |         24 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterEdit\characterEdit.component.scss           | SCSS       |         12 |          0 |          0 |         12 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterEdit\characterEdit.component.ts             | TypeScript |         46 |          0 |          8 |         54 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterEntry\characterEntry.component.html         | HTML       |          6 |          0 |          0 |          6 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterEntry\characterEntry.component.scss         | SCSS       |         12 |          0 |          0 |         12 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterEntry\characterEntry.component.ts           | TypeScript |         10 |          0 |          2 |         12 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterManagement-routing.module.ts                | TypeScript |         16 |          0 |          4 |         20 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterManagement.component.html                   | HTML       |         20 |          0 |          2 |         22 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterManagement.component.ts                     | TypeScript |         26 |          0 |          6 |         32 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\characterManagement\characterManagement.module.ts                        | TypeScript |         29 |          0 |          3 |         32 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\chatRoom\chatRoom-routing.module.ts                                      | TypeScript |         12 |          0 |          4 |         16 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\chatRoom\chatRoom.component.html                                         | HTML       |          7 |          0 |          2 |          9 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\chatRoom\chatRoom.component.ts                                           | TypeScript |         14 |          0 |          2 |         16 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\chatRoom\chatRoom.module.ts                                              | TypeScript |         25 |          0 |          3 |         28 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\components\chat\chat.component.html                                      | HTML       |         13 |          0 |          0 |         13 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\components\chat\chat.component.scss                                      | SCSS       |         18 |          0 |          0 |         18 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\components\chat\chat.component.ts                                        | TypeScript |         56 |          0 |         12 |         68 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\components\chat\chat.module.ts                                           | TypeScript |         26 |          0 |          3 |         29 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\components\chat\chat.service.ts                                          | TypeScript |         30 |          0 |          9 |         39 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\components\chat\message\message.component.html                           | HTML       |          6 |          0 |          0 |          6 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\components\chat\message\message.component.scss                           | SCSS       |         18 |          0 |          0 |         18 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\components\chat\message\message.component.ts                             | TypeScript |         11 |          0 |          3 |         14 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conDetails\conDetails.component.html                       | HTML       |         31 |          0 |          5 |         36 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conDetails\conDetails.component.scss                       | SCSS       |         15 |          0 |          0 |         15 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conDetails\conDetails.component.ts                         | TypeScript |         24 |          0 |          5 |         29 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conEdit\conEdit.component.html                             | HTML       |         25 |          0 |          2 |         27 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conEdit\conEdit.component.scss                             | SCSS       |         18 |          0 |          0 |         18 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conEdit\conEdit.component.ts                               | TypeScript |         44 |          0 |          8 |         52 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conEntry\conEntry.component.html                           | HTML       |          7 |          0 |          0 |          7 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conEntry\conEntry.component.scss                           | SCSS       |         12 |          0 |          0 |         12 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conEntry\conEntry.component.ts                             | TypeScript |         10 |          0 |          2 |         12 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conMain\conMain.component.html                             | HTML       |         20 |          0 |          6 |         26 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conMain\conMain.component.scss                             | SCSS       |         15 |          0 |          0 |         15 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conMain\conMain.component.ts                               | TypeScript |         25 |          0 |          6 |         31 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conManagement-routing.module.ts                            | TypeScript |         18 |          0 |          4 |         22 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conManagement.component.html                               | HTML       |         19 |          0 |          2 |         21 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conManagement.component.ts                                 | TypeScript |         26 |          0 |          5 |         31 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\conManagement.module.ts                                    | TypeScript |         33 |          0 |          2 |         35 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\conManagement\convention.service.ts                                      | TypeScript |         56 |          0 |         13 |         69 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\home\home-routing.module.ts                                              | TypeScript |         12 |          0 |          4 |         16 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\home\home.component.html                                                 | HTML       |         11 |          9 |          1 |         21 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\home\home.component.ts                                                   | TypeScript |         18 |          2 |          5 |         25 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\home\home.module.ts                                                      | TypeScript |         17 |          0 |          3 |         20 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\login\login-routing.module.ts                                            | TypeScript |         12 |          0 |          4 |         16 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\login\login.component.html                                               | HTML       |         15 |          1 |          1 |         17 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\login\login.component.ts                                                 | TypeScript |         67 |          0 |          9 |         76 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\login\login.module.ts                                                    | TypeScript |         19 |          0 |          4 |         23 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\login\login.service.ts                                                   | TypeScript |         50 |          0 |         11 |         61 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\models\character.model.ts                                                | TypeScript |          6 |         22 |          2 |         30 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\models\convention.model.ts                                               | TypeScript |          9 |          0 |          2 |         11 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\models\kalethaner.model.ts                                               | TypeScript |          6 |          0 |          2 |          8 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\models\member.model.ts                                                   | TypeScript |          5 |          0 |          1 |          6 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\models\message.model.ts                                                  | TypeScript |          8 |          0 |          1 |          9 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\models\user.model.ts                                                     | TypeScript |          4 |          0 |          1 |          5 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\services\user.service.ts                                                 | TypeScript |         37 |          0 |          8 |         45 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\settings\settings-routing.module.ts                                      | TypeScript |         12 |          0 |          4 |         16 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\settings\settings.component.html                                         | HTML       |         11 |          9 |          1 |         21 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\settings\settings.component.ts                                           | TypeScript |         18 |          2 |          5 |         25 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\settings\settings.module.ts                                              | TypeScript |         17 |          0 |          3 |         20 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\user\user-routing.module.ts                                              | TypeScript |         12 |          0 |          4 |         16 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\user\user.component.html                                                 | HTML       |         10 |          0 |          0 |         10 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\user\user.component.ts                                                   | TypeScript |         16 |          6 |          6 |         28 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\app\user\user.module.ts                                                      | TypeScript |         19 |          0 |          2 |         21 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\main.ts                                                                      | TypeScript |          3 |          1 |          3 |          7 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\src\package.json                                                                 | JSON       |          7 |          0 |          1 |          8 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\tsconfig.json                                                                    | JSON       |         16 |         12 |          0 |         28 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\tsconfig.tns.json                                                                | JSON       |          7 |          0 |          1 |          8 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\tsfmt.json                                                                       | JSON       |          4 |          0 |          1 |          5 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\tslint.json                                                                      | JSON       |          5 |         54 |          0 |         59 |
+| c:\Users\Lucius Spiro\KalethaApp\KalethaApp\webpack.config.js                                                                | JavaScript |        244 |         62 |         14 |        320 |
+| Total                                                                                                                        |            |     10,151 |        233 |        361 |     10,745 |
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

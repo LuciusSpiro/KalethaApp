@@ -4,6 +4,8 @@ import { ActivatedRoute } from "@angular/router";
 import { ConService } from "~/app/conManagement/convention.service";
 import * as app from "tns-core-modules/application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import { CharacterService } from "../character.service";
+import { Character } from "~/app/models/character.model";
 
 @Component({
     selector: "CharacterDetails",
@@ -11,15 +13,15 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
     styleUrls: ["./characterDetails.Component.scss"]
 })
 export class CharacterDetailsComponent implements OnInit {
-    convention: Con;
-    conName: string;
+    character: Character;
+    characterName: string;
 
-    constructor(private route: ActivatedRoute, private conService: ConService) {
+    constructor(private route: ActivatedRoute, private characterService: CharacterService) {
     }
 
     ngOnInit(): void {
-        this.conName = this.route.snapshot.params.id;
-        this.convention = this.conService.getCon(this.conName);
+        this.characterName = this.route.snapshot.params.id;
+        this.character = this.characterService.getCharacter(this.characterName);
     }
 
     onDrawerButtonTap(): void {

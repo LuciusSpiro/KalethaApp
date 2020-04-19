@@ -8,8 +8,8 @@
         flex-direction: row;
         justify-content: space-around;
         flex-shrink: 0;
-    }
-    &__chat {
-        flex-grow: 1;
+        &--big {
+            flex-grow: 1;
+        }
     }
 }
