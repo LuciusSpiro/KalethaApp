@@ -8,6 +8,7 @@ import { CharacterDetailsComponent } from "./characterDetails/characterDetails.c
 import { CharacterEntryComponent } from "./characterEntry/characterEntry.component";
 import { CharacterService } from "./character.service";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { ListService } from "../services/list.service";
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
         CharacterEntryComponent
     ],
     providers: [
-        CharacterService
+        CharacterService,
+        ListService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

@@ -25,11 +25,7 @@ export class LoginComponent {
     this.user.email = "";
     this.user.password = "";
 
-    this.neuerKalethaner = {
-      otName: "",
-      characters: [],
-      level: 0
-    };
+    this.neuerKalethaner = new Kalethaner();
   }
 
   submit() {

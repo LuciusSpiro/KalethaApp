@@ -8,6 +8,8 @@ import * as app from "tns-core-modules/application";
     templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
+    items = [1, 2, 3, 4];
+    value = 2;
 
     constructor() {
         // Use the component constructor to inject providers.
@@ -15,6 +17,10 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
         // Init your component properties here.
+    }
+
+    printOut() {
+        console.log(this.value);
     }
 
     onDrawerButtonTap(): void {

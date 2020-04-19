@@ -1,8 +1,9 @@
 export class Character {
     itName: string = "";
-    rang: number = 0;
-    class: number = 0;
-    description: string;
+    otName: string = "";
+    rang: string = "Kalethaner";
+    class: string = "Zivilist";
+    description: string = "";
 }
 
 /**

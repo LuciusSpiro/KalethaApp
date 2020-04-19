@@ -1,7 +1,4 @@
-import { Character } from "./character.model";
-
 export class Kalethaner {
-    characters: Array<Character>;
-    otName: string;
-    level: number;
+    otName: string = "";
+    level: number = 0;
 }

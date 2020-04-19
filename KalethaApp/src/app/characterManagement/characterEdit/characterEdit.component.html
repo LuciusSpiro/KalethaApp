@@ -6,19 +6,53 @@
     <Label class="action-bar-title" text="Conbearbeitung"></Label>
 </ActionBar>
 
-<FlexboxLayout flexDirection="column" justifyContent="space-between">
-    <ScrollView>
-        <StackLayout class="card">
-            <Image *ngIf="isLoggingIn" class="logo" src="res://logo" stretch="none" horizontalAlignment="center"></Image>
-            <StackLayout [class]="isLoggingIn ? 'form white' : 'form gold'">
-                <Label class="input input-border" [text]="character.itName" *ngIf="characterItName !== 'new'"></Label>
-                <TextField class="input input-border" hint="IT Name" [(ngModel)]="character.itName" *ngIf="characterItName === 'new'"></TextField>
-                <TextField class="input input-border" hint="Beschreibung" [(ngModel)]="character.description"></TextField>
+<GridLayout>
+    <FlexboxLayout flexDirection="column" justifyContent="space-between">
+        <ScrollView>
+            <StackLayout class="card">
+                <StackLayout>
+                    <Label class="input input-border" [text]="character.itName" *ngIf="characterItName !== 'new'"></Label>
+                    <TextField class="input input-border" hint="IT Name" [(ngModel)]="character.itName" *ngIf="characterItName === 'new'"></TextField>
+                    <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
+                        <FlexboxLayout class="list-select">
+                            <FlexboxLayout class="list-select__box" (tap)="toggleClassDialog()" [ngClass]="{'list-select__box--active': classDialogOpen}">
+                                <Label class="list-select__text" [text]="character.class"></Label>
+                            </FlexboxLayout>
+                        </FlexboxLayout>
+                        <FlexboxLayout class="list-select" *ngIf="notACivilian()">
+                            <FlexboxLayout class="list-select__box" (tap)="toggleRangDialog()" [ngClass]="{'list-select__box--active': rangDialogOpen}">
+                                <Label class="list-select__text" [text]="character.rang"></Label>
+                            </FlexboxLayout>
+                        </FlexboxLayout>
+                    </FlexboxLayout>
+                    <TextField class="input input-border" hint="Beschreibung" [(ngModel)]="character.description"></TextField>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
-    </ScrollView>
-    <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
-        <Button text="Verwerfen" class="text-center btn" width="50%" (tap)="dismiss()"></Button>
-        <Button text="Fertig" class="text-center btn btn-primary" width="50%" (tap)="submit()"></Button>
+        </ScrollView>
+        <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
+            <Button text="Verwerfen" class="text-center btn" width="50%" (tap)="dismiss()"></Button>
+            <Button text="Fertig" class="text-center btn btn-primary" width="50%" (tap)="submit()"></Button>
+        </FlexboxLayout>
     </FlexboxLayout>
-</FlexboxLayout>
+
+
+    <AbsoluteLayout #overlay class="overlay" *ngIf="rangDialogOpen" (tap)="toggleRangDialog()" [ngClass]="{'showDialog': rangDialogOpen}">
+        <FlexboxLayout class="dialog">
+            <FlexboxLayout class="dialog__container">
+                <FlexboxLayout class="dialog__box" *ngFor="let item of rangList" (tap)="changeRangTo(item)">
+                    <Label class="dialog__value" [text]="item"></Label>
+                </FlexboxLayout>
+            </FlexboxLayout>
+        </FlexboxLayout>
+    </AbsoluteLayout>
+
+    <AbsoluteLayout #overlay class="overlay" *ngIf="classDialogOpen" (tap)="toggleClassDialog()" [ngClass]="{'showDialog': classDialogOpen}">
+        <FlexboxLayout class="dialog">
+            <FlexboxLayout class="dialog__container">
+                <FlexboxLayout class="dialog__box" *ngFor="let item of classList" (tap)="changeClassTo(item)">
+                    <Label class="dialog__value" [text]="item"></Label>
+                </FlexboxLayout>
+            </FlexboxLayout>
+        </FlexboxLayout>
+    </AbsoluteLayout>
+</GridLayout>

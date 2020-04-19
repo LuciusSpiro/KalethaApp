@@ -8,6 +8,8 @@
 
 <FlexboxLayout flexDirection="column" justifyContent="space-between">
     <ScrollView>
+
+
         <FlexboxLayout flexDirection="column">
             <FlexboxLayout *ngFor="let con of getCons()" width="100%">
                 <ConEntry [con]="con"></ConEntry>

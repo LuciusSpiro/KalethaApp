@@ -6,5 +6,5 @@ export class Con {
   conLink: string = "";
   description: string = "";
   date: Date = new Date();
-  memberList: Array<Member> = [];
+  members: Array<Member> = [];
 }

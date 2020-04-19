@@ -24,7 +24,7 @@ export class UserService {
             return this.currentUser;
         }
 
-        return { otName: "", characters: [], level: 0 };
+        return { otName: "", level: 0 };
     }
 
     fetchCurrentUser(): Promise<void> {

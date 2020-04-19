@@ -1,5 +1,5 @@
 export class Member {
   otName: string;
-  character: string;
+  characterName: string;
   participation: string;
 }

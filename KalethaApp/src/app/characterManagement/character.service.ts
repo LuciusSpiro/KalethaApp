@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Character } from "../models/character.model";
+import { UserService } from "../services/user.service";
 
 const firebase = require("nativescript-plugin-firebase");
 
@@ -10,6 +11,13 @@ const firebase = require("nativescript-plugin-firebase");
 export class CharacterService {
     $characters: Subject<Array<Character>>;
     characterList: Array<Character>;
+
+    constructor(
+        private userService: UserService
+    ) {
+
+    }
+
     init(): void {
         this.$characters = new Subject();
         this.getAllCharacters().then((characters) => {
@@ -27,7 +35,9 @@ export class CharacterService {
     }
 
     subscribeToCharacterCollection(callBack: any): void {
-        firebase.firestore.collection("Character").onSnapshot(callBack);
+        firebase.firestore.collection("Character")
+            .where("otName", "==", this.userService.getCurrentUser().otName)
+            .onSnapshot(callBack);
     }
 
     getCharacter(itName: string): Character {
@@ -35,20 +45,24 @@ export class CharacterService {
     }
 
     getAllCharacters(): Promise<Array<Character>> {
-        return firebase.firestore.collection("Character").get({ source: "server" }).then((querySnapshot) => {
-            const characters = [];
-            querySnapshot.forEach((doc) => {
-                characters.push(doc.data());
-            });
+        return firebase.firestore.collection("Character")
+            .where("otName", "==", this.userService.getCurrentUser().otName)
+            .get({ source: "server" })
+            .then((querySnapshot) => {
+                const characters = [];
+                querySnapshot.forEach((doc) => {
+                    characters.push(doc.data());
+                });
 
-            return characters;
-        });
+                return characters;
+            });
     }
 
     addCharacter(character: Character): void {
         if (!character.itName) {
             return;
         }
+        character.otName = this.userService.getCurrentUser().otName;
         this.characterList.push(character);
         firebase.firestore.collection("Character").doc(character.itName).set(character);
 
