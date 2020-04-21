@@ -6,6 +6,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { LoginService } from "./login/login.service";
 import { UserService } from "./services/user.service";
+import { CharacterService } from "./characterManagement/character.service";
 
 @NgModule({
     bootstrap: [
@@ -18,7 +19,8 @@ import { UserService } from "./services/user.service";
     ],
     providers: [
         LoginService,
-        UserService
+        UserService,
+        CharacterService
     ],
     declarations: [
         AppComponent

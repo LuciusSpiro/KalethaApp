@@ -11,6 +11,7 @@ const firebase = require("nativescript-plugin-firebase");
 export class CharacterService {
     $characters: Subject<Array<Character>>;
     characterList: Array<Character>;
+    isInitiated: boolean = false;
 
     constructor(
         private userService: UserService
@@ -19,19 +20,22 @@ export class CharacterService {
     }
 
     init(): void {
-        this.$characters = new Subject();
-        this.getAllCharacters().then((characters) => {
-            this.$characters.next(characters);
-        });
-        this.$characters.subscribe((characters: Array<Character>) => this.characterList = characters);
-        this.subscribeToCharacterCollection((snapshot) => {
-            const characters = [];
-            snapshot.forEach((doc) => {
-                characters.push(doc.data());
+        if (!this.isInitiated) {
+            this.$characters = new Subject();
+            this.getAllCharacters().then((characters) => {
+                this.$characters.next(characters);
             });
+            this.$characters.subscribe((characters: Array<Character>) => this.characterList = characters);
+            this.subscribeToCharacterCollection((snapshot) => {
+                const characters = [];
+                snapshot.forEach((doc) => {
+                    characters.push(doc.data());
+                });
 
-            this.$characters.next(characters);
-        });
+                this.$characters.next(characters);
+            });
+            this.isInitiated = true;
+        }
     }
 
     subscribeToCharacterCollection(callBack: any): void {
@@ -65,7 +69,6 @@ export class CharacterService {
         character.otName = this.userService.getCurrentUser().otName;
         this.characterList.push(character);
         firebase.firestore.collection("Character").doc(character.itName).set(character);
-
     }
 
     updateCharacter(character: Character): void {

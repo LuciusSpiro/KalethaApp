@@ -6,6 +6,7 @@ import { filter } from "rxjs/operators";
 import * as app from "tns-core-modules/application";
 import { LoginService } from "./login/login.service";
 import { UserService } from "./services/user.service";
+import { CharacterService } from "./characterManagement/character.service";
 
 const firebase = require("nativescript-plugin-firebase");
 
@@ -25,7 +26,8 @@ export class AppComponent implements OnInit {
     constructor(
         private router: Router,
         private routerExtensions: RouterExtensions,
-        private userService: UserService) {
+        private userService: UserService,
+        private characterService: CharacterService) {
     }
 
     ngOnInit(): void {
@@ -79,13 +81,17 @@ export class AppComponent implements OnInit {
         }).then(
             (instance) => {
                 console.log("firebase.init done");
-                this.userService.fetchCurrentUser();
+
+                return this.userService.fetchCurrentUser();
             },
             (error) => {
                 console.log("firebase.init error: " + error);
-                this.userService.fetchCurrentUser();
+
+                return this.userService.fetchCurrentUser();
             }
-        );
+        ).then(() => {
+            this.characterService.init();
+        });
     }
 
     getKalethanerOTName(): string {

@@ -23,7 +23,6 @@ import { ListService } from "../services/list.service";
         CharacterEntryComponent
     ],
     providers: [
-        CharacterService,
         ListService
     ],
     schemas: [

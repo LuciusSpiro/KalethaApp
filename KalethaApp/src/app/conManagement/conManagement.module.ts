@@ -9,6 +9,9 @@ import { ConDetailsComponent } from "./conDetails/conDetails.component";
 import { ConService } from "./convention.service";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { ChatModule } from "../components/chat/chat.module";
+import { MemberService } from "./member.service";
+import { ListService } from "../services/list.service";
+import { CharacterService } from "../characterManagement/character.service";
 
 @NgModule({
     imports: [
@@ -25,7 +28,9 @@ import { ChatModule } from "../components/chat/chat.module";
         ConDetailsComponent
     ],
     providers: [
-        ConService
+        ConService,
+        MemberService,
+        ListService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

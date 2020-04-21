@@ -5,32 +5,59 @@
     </ActionItem>
     <Label class="action-bar-title" text="Conbearbeitung"></Label>
 </ActionBar>
-<FlexboxLayout class="con-details">
 
-    <FlexboxLayout class="con-details__box">
-        <Label class="message__text" [text]="convention.name"></Label>
-    </FlexboxLayout>
-    <FlexboxLayout class="con-details__box">
-        <Label class="message__text" [text]="convention.date"></Label>
-    </FlexboxLayout>
-    <FlexboxLayout class="con-details__box con-details__box--big">
-        <ScrollView>
-            <FlexboxLayout class="con-details__box">
-                <Label class="message__text" text="Beschreibung"></Label>
-                <Label class="message__text" [text]="convention.description"></Label>
+<GridLayout>
+    <FlexboxLayout class="con-details">
+
+        <FlexboxLayout class="con-details__box">
+            <Label class="message__text" [text]="convention.name"></Label>
+        </FlexboxLayout>
+        <FlexboxLayout class="con-details__box">
+            <Label class="message__text" [text]="convention.date"></Label>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="list-select">
+            <FlexboxLayout class="list-select__box" (tap)="toggleAssignDialog()" [ngClass]="{'list-select__box--active': assignDialogOpen, 'assign-switch__no': getAssignmentState('Keine Zeit'), 'assign-switch__maybe': getAssignmentState('Interessiert'), 'assign-switch__yes': getAssignmentState('Nehme Teil') }">
+                <Label class="list-select__text" [text]="currentMember.participation || 'Bitte sag uns ob du Teil nimmst'"></Label>
             </FlexboxLayout>
-        </ScrollView>
+
+            <FlexboxLayout class="list-select__box" (tap)="toggleCharacterDialog()" [ngClass]="{'list-select__box--active': characterDialogOpen}">
+                <Label class="list-select__text" [text]="currentMember.characterName || 'Wähle deinen Charakter aus'"></Label>
+            </FlexboxLayout>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="con-details__box con-details__box--big">
+            <ScrollView>
+                <FlexboxLayout class="con-details__box">
+                    <Label class="message__text" text="Beschreibung"></Label>
+                    <Label class="message__text" [text]="convention.description"></Label>
+                </FlexboxLayout>
+            </ScrollView>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="con-details__box">
+            <Label class="message__text" text="Link zur Con:"></Label>
+            <Label class="message__text" [text]="convention.conLink"></Label>
+        </FlexboxLayout>
     </FlexboxLayout>
 
-    <FlexboxLayout class="con-details__box">
-        <Label class="message__text" text="Link zur Con:"></Label>
-        <Label class="message__text" [text]="convention.conLink"></Label>
-    </FlexboxLayout>
-    <FlexboxLayout class="con-details__box">
-        <Label text="Kann nicht" class="text-center btn"></Label>
-        <Label text="Interessiert" class="text-center btn"></Label>
-        <Label text="Nehme Teil" class="text-center btn btn-primary"></Label>
-    </FlexboxLayout>
+    <AbsoluteLayout #overlay class="overlay" *ngIf="characterDialogOpen" (tap)="toggleCharacterDialog()" [ngClass]="{'showDialog': characterDialogOpen}">
+        <FlexboxLayout class="dialog">
+            <FlexboxLayout class="dialog__container">
+                <FlexboxLayout class="dialog__box" *ngFor="let item of characterList" (tap)="changeCharacterTo(item)">
+                    <Label class="dialog__value" [text]="item.itName"></Label>
+                </FlexboxLayout>
+            </FlexboxLayout>
+        </FlexboxLayout>
+    </AbsoluteLayout>
 
-
-</FlexboxLayout>
+    <AbsoluteLayout #overlay class="overlay" *ngIf="assignDialogOpen" (tap)="toggleAssignDialog()" [ngClass]="{'showDialog': assignDialogOpen}">
+        <FlexboxLayout class="dialog">
+            <FlexboxLayout class="dialog__container">
+                <FlexboxLayout class="dialog__box" *ngFor="let item of assignList" (tap)="changeParticipationTo(item)">
+                    <Label class="dialog__value" [text]="item"></Label>
+                </FlexboxLayout>
+            </FlexboxLayout>
+        </FlexboxLayout>
+    </AbsoluteLayout>
+</GridLayout>

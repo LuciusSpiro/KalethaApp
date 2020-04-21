@@ -1,5 +1,6 @@
 export class Member {
-  otName: string;
-  characterName: string;
-  participation: string;
+  otName: string = "";
+  characterName: string = "";
+  conName: string = "";
+  participation: string = "";
 }
