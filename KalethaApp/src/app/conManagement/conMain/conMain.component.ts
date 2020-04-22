@@ -8,7 +8,7 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 @Component({
     selector: "ConMain",
     templateUrl: "./conMain.component.html",
-    styleUrls: ["./conMain.Component.scss"]
+    styleUrls: ["./conMain.component.scss"]
 })
 export class ConMainComponent implements OnInit {
     convention: Con;

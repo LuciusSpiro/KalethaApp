@@ -1,13 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import * as app from "tns-core-modules/application";
 import { ConService } from "./convention.service";
 import { Con } from "../models/convention.model";
 
 @Component({
     selector: "conManagement",
     moduleId: module.id,
-    templateUrl: "./conManagement.component.html"
+    templateUrl: "./conManagement.component.html",
+    styleUrls: ["./conManagement.Component.scss"]
 })
 export class ConManagementComponent implements OnInit {
     cons: Array<Con>;
@@ -24,8 +23,5 @@ export class ConManagementComponent implements OnInit {
         return this.conService.conList;
     }
 
-    onDrawerButtonTap(): void {
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-        sideDrawer.showDrawer();
-    }
+
 }

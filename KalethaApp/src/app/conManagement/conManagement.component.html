@@ -1,22 +1,14 @@
-<ActionBar class="action-bar">
-    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+<Headbar headline="Converwaltung"></Headbar>
 
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
-    </ActionItem>
-    <Label class="action-bar-title" text="conManagement"></Label>
-</ActionBar>
-
-<FlexboxLayout flexDirection="column" justifyContent="space-between">
+<FlexboxLayout class="con-management k-container">
     <ScrollView>
-
-
-        <FlexboxLayout flexDirection="column">
-            <FlexboxLayout *ngFor="let con of getCons()" width="100%">
+        <FlexboxLayout class="con-management__con-container">
+            <FlexboxLayout *ngFor="let con of getCons()">
                 <ConEntry [con]="con"></ConEntry>
             </FlexboxLayout>
         </FlexboxLayout>
     </ScrollView>
-    <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
+    <FlexboxLayout class="con-management__footer">
         <Label width="75%"></Label>
         <Button text="+" class="text-center btn btn-primary" [nsRouterLink]="['./edit/new']" width="25%"></Button>
     </FlexboxLayout>

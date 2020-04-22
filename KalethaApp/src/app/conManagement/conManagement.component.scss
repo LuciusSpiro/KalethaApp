@@ -1,0 +1,11 @@
+.con-management {
+    justify-content: space-between;
+    &__con-container {
+        flex-direction: column;
+    }
+    &__footer {
+        flex-direction: row;
+        flex-shrink: 0;
+        justify-content: space-between;
+    }
+}

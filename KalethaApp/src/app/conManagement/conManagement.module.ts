@@ -12,13 +12,15 @@ import { ChatModule } from "../components/chat/chat.module";
 import { MemberService } from "./member.service";
 import { ListService } from "../services/list.service";
 import { CharacterService } from "../characterManagement/character.service";
+import { SharedModule } from "../components/shared.module";
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
         NativeScriptFormsModule,
         ConManagementRoutingModule,
-        ChatModule
+        ChatModule,
+        SharedModule
     ],
     declarations: [
         ConManagementComponent,

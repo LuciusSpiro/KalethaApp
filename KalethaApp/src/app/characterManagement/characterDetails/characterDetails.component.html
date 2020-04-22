@@ -1,12 +1,6 @@
-<ActionBar class="action-bar">
-    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+<Headbar headline="Characterdetails"></Headbar>
 
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
-    </ActionItem>
-    <Label class="action-bar-title" text="Charakterdetails"></Label>
-</ActionBar>
 <FlexboxLayout class="character-details">
-
     <FlexboxLayout class="character-details__box">
         <Label class="message__text" [text]="character.itName"></Label>
     </FlexboxLayout>
@@ -23,10 +17,7 @@
         </ScrollView>
     </FlexboxLayout>
 
-
     <FlexboxLayout class="character-details__box">
         <Button text="Bearbeiten" class="text-center btn btn-primary" [nsRouterLink]="['../../edit/' + character.itName]"></Button>
     </FlexboxLayout>
-
-
 </FlexboxLayout>

@@ -1,0 +1,17 @@
+.k-box {
+    padding: 10;
+    margin: 5 5;
+    border-radius: 5;
+    background-color: #666666;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-shrink: 0;
+    color: #fab856;
+    font-size: 20;
+    &--big {
+        flex-grow: 1;
+    }
+    &--column {
+        flex-direction: column;
+    }
+}

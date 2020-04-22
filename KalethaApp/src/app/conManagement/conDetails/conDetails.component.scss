@@ -12,11 +12,18 @@
             flex-grow: 1;
         }
     }
+    &__participation {
+        flex-grow: 1;
+    }
+    &__character {
+        width: 66%;
+        flex-shrink: 0;
+    }
 }
 
 .list-select {
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
     &__box {
         justify-content: center;
         align-items: center;
@@ -25,7 +32,6 @@
         margin: 10;
         padding: 5 10;
         background-color: #d6d6d6;
-        max-width: 80%;
         flex-direction: column;
         &--active {
             background-color: #8ec6fa;

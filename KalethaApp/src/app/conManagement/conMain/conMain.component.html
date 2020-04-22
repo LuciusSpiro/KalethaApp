@@ -1,22 +1,15 @@
-<ActionBar class="action-bar">
-    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+<Headbar headline="Converwaltung"></Headbar>
 
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
-    </ActionItem>
-    <Label class="action-bar-title" text="conManagement"></Label>
+<FlexboxLayout class="con-main k-container">
 
-</ActionBar>
-
-<FlexboxLayout class="con-main">
-
-    <FlexboxLayout class="con-main__box" [nsRouterLink]="['../../details/' + convention.name]">
+    <FlexboxLayout class="k-box" [nsRouterLink]="['../../details/' + convention.name]">
         <Label class="message__text" [text]="convention.name"></Label>
     </FlexboxLayout>
-    <FlexboxLayout class="con-main__box">
+    <FlexboxLayout class="k-box">
         <Label class="message__text" text="Planungsdokument"></Label>
         <Button text="Edit" class="text-center btn" [nsRouterLink]="['../../edit/' + convention.name ]" width="25%"></Button>
     </FlexboxLayout>
-    <FlexboxLayout class="con-main__box">
+    <FlexboxLayout class="k-box">
         <Label class="message__text" text="Teilnehmer"></Label>
         <Label class="message__text" [text]="convention.members?.length || 0"></Label>
     </FlexboxLayout>

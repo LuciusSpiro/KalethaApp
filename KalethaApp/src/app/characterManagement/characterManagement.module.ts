@@ -9,12 +9,14 @@ import { CharacterEntryComponent } from "./characterEntry/characterEntry.compone
 import { CharacterService } from "./character.service";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { ListService } from "../services/list.service";
+import { SharedModule } from "../components/shared.module";
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
         NativeScriptFormsModule,
-        CharacterManagementRoutingModule
+        CharacterManagementRoutingModule,
+        SharedModule
     ],
     declarations: [
         CharacterManagementComponent,

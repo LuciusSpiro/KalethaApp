@@ -1,0 +1,7 @@
+<ActionBar class="action-bar" iosIconRenderingMode="alwaysTemplate">
+    <NavigationButton ios:visibility="collapsed" color="red" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+
+    <ActionItem icon="res://navigation/menu" color="red" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" [text]="headline"></Label>
+</ActionBar>
