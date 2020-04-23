@@ -2,13 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { Con } from "~/app/models/convention.model";
 import { ActivatedRoute } from "@angular/router";
 import { ConService } from "~/app/conManagement/convention.service";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import * as app from "tns-core-modules/application";
 import { MemberService } from "../member.service";
 import { UserService } from "~/app/services/user.service";
 import { Member } from "~/app/models/member.model";
 import { ListService } from "~/app/services/list.service";
-import { borderTopRightRadiusProperty } from "tns-core-modules/ui/page/page";
 import { CharacterService } from "~/app/characterManagement/character.service";
 import { Character } from "~/app/models/character.model";
 
@@ -50,7 +47,7 @@ export class ConDetailsComponent implements OnInit {
                     this.currentMember = member;
                     this.loadedMember = true;
                 } else {
-                    this.memberService.addMemberToCon(this.currentMember, this.convention)
+                    this.memberService.addMemberToCon(this.currentMember, this.convention);
                 }
             });
     }
@@ -75,10 +72,5 @@ export class ConDetailsComponent implements OnInit {
     changeCharacterTo(character: Character) {
         this.currentMember.characterName = character.itName;
         this.memberService.updateMemberAtCon(this.currentMember, this.convention);
-    }
-
-    onDrawerButtonTap(): void {
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-        sideDrawer.showDrawer();
     }
 }

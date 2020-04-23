@@ -1,23 +1,19 @@
 .con-details {
     width: 100%;
     flex-direction: column;
-    &__box {
-        padding: 5 10;
-        margin-bottom: 5;
-        background-color: #d6d6d6;
-        flex-direction: row;
-        justify-content: space-around;
-        flex-shrink: 0;
-        &--big {
-            flex-grow: 1;
-        }
-    }
     &__participation {
         flex-grow: 1;
     }
     &__character {
         width: 66%;
         flex-shrink: 0;
+    }
+    .con-details__description {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-grow: 1;
+        height: 100%;
     }
 }
 

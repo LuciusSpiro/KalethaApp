@@ -1,19 +1,21 @@
-// clickable box with content inside
-.k-box {
+// shows not clickable infos
+.k-segment {
     padding: 10;
     margin: 5 5;
     border-radius: 5;
-    background-color: #555555;
+    background-color: #272727;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
     color: #fab856;
-    font-size: 20;
+    font-size: 16;
     &--big {
         flex-grow: 1;
     }
     &--column {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
     }
 }

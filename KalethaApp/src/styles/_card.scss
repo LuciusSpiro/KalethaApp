@@ -1,0 +1,18 @@
+// a information clickable information area with a list of information
+.k-card {
+    padding: 15;
+    margin: 10 5;
+    border-radius: 5;
+    background-color: #555555;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-shrink: 0;
+    color: #fab856;
+    font-size: 16;
+    width: 80%;
+}
+
+.k-card__wrapper {
+    justify-content: center;
+    width: 100%;
+}

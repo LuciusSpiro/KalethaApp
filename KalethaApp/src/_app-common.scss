@@ -5,7 +5,7 @@
     font-family: "FontAwesome";
 }
 
-@import "styles/main";
+@import "styles/all";
 // Common page class
 .page-content {
     .page-placeholder {
@@ -30,6 +30,14 @@
 //Action bar
 ActionBar .action-bar-title {
     horizontal-align: center;
+}
+
+.btn {
+    background-color: $k-action;
+    color: $k-primary;
+    &-primary {
+        background-color: $btn-color;
+    }
 }
 
 // Drawer navigation custom styles

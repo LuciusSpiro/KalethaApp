@@ -1,3 +1,8 @@
+.con-entry {
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .message {
     width: 100%;
     &--right {

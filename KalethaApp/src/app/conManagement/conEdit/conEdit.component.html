@@ -1,9 +1,9 @@
 <Headbar headline="Bearbeite deine Con"></Headbar>
 
-<FlexboxLayout flexDirection="column" justifyContent="space-between">
+<FlexboxLayout class="con-entry k-container">
     <ScrollView>
-        <StackLayout class="card">
-            <StackLayout>
+        <StackLayout>
+            <StackLayout class="box">
                 <Label class="input input-border" [text]="convention.name" *ngIf="conName !== 'new'"></Label>
                 <TextField class="input input-border" hint="Name" [(ngModel)]="convention.name" *ngIf="conName === 'new'"></TextField>
                 <TextField class="input input-border" hint="Datum" [(ngModel)]="convention.date" keyboardType="datetime"></TextField>

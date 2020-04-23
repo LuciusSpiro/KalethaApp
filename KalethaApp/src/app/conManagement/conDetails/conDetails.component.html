@@ -1,12 +1,12 @@
 <Headbar headline="Condetails"></Headbar>
 
 <GridLayout>
-    <FlexboxLayout class="con-details">
+    <FlexboxLayout class="con-details k-container">
 
-        <FlexboxLayout class="con-details__box">
+        <FlexboxLayout class="k-segment">
             <Label class="message__text" [text]="convention.name"></Label>
         </FlexboxLayout>
-        <FlexboxLayout class="con-details__box">
+        <FlexboxLayout class="k-segment">
             <Label class="message__text" [text]="convention.date"></Label>
         </FlexboxLayout>
 
@@ -20,16 +20,14 @@
             </FlexboxLayout>
         </FlexboxLayout>
 
-        <FlexboxLayout class="con-details__box con-details__box--big">
-            <ScrollView>
-                <FlexboxLayout class="con-details__box">
-                    <Label class="message__text" text="Beschreibung"></Label>
-                    <Label class="message__text" [text]="convention.description"></Label>
-                </FlexboxLayout>
-            </ScrollView>
-        </FlexboxLayout>
+        <ScrollView>
+            <FlexboxLayout class="k-segment con-details__description">
+                <Label text="Beschreibung"></Label>
+                <Label [text]="convention.description"></Label>
+            </FlexboxLayout>
+        </ScrollView>
 
-        <FlexboxLayout class="con-details__box">
+        <FlexboxLayout class="k-segment">
             <Label class="message__text" text="Link zur Con:"></Label>
             <Label class="message__text" [text]="convention.conLink"></Label>
         </FlexboxLayout>

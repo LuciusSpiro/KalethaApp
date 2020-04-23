@@ -2,12 +2,13 @@
 
 <FlexboxLayout class="con-main k-container">
 
-    <FlexboxLayout class="k-box" [nsRouterLink]="['../../details/' + convention.name]">
-        <Label class="message__text" [text]="convention.name"></Label>
+    <FlexboxLayout class="k-box">
+        <Label class="con-main__text" [text]="convention.name" [nsRouterLink]="['../../details/' + convention.name]"></Label>
+        <Label text="&#xf040;" class="fa con-main__edit" [nsRouterLink]="['../../edit/' + convention.name ]"></Label>
     </FlexboxLayout>
     <FlexboxLayout class="k-box">
         <Label class="message__text" text="Planungsdokument"></Label>
-        <Button text="Edit" class="text-center btn" [nsRouterLink]="['../../edit/' + convention.name ]" width="25%"></Button>
+
     </FlexboxLayout>
     <FlexboxLayout class="k-box">
         <Label class="message__text" text="Teilnehmer"></Label>
