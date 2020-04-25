@@ -1,28 +1,39 @@
 <Headbar headline="Bearbeite deine Con"></Headbar>
-
-<FlexboxLayout class="con-entry k-container">
-    <ScrollView>
-        <StackLayout>
-            <StackLayout class="k-box">
-                <Label class="input input-border" [text]="convention.name" *ngIf="conName !== 'new'"></Label>
-                <TextField class="input input-border" hint="Name" [(ngModel)]="convention.name" *ngIf="conName === 'new'"></TextField>
+<GridLayout>
+    <FlexboxLayout class="con-entry k-container">
+        <ScrollView>
+            <StackLayout>
+                <StackLayout class="k-box">
+                    <Label class="input input-border" [text]="convention.name" *ngIf="conName !== 'new'"></Label>
+                    <TextField class="input input-border" hint="Name" [(ngModel)]="convention.name" *ngIf="conName === 'new'"></TextField>
+                </StackLayout>
+                <StackLayout class="k-box" (tap)="toggleDateDialog()">
+                    <TextField class="input input-border" hint="Datum" [(ngModel)]="convention.date" keyboardType="datetime"></TextField>
+                </StackLayout>
+                <StackLayout class="k-box">
+                    <TextField class="input input-border" hint="Link zur Con" [(ngModel)]="convention.conLink"></TextField>
+                </StackLayout>
+                <StackLayout class="k-box">
+                    <TextField class="input input-border" hint="Planungsdokument" [(ngModel)]="convention.planDoc"></TextField>
+                </StackLayout>
+                <StackLayout class="k-box">
+                    <TextView class="input input-border" hint="Beschreibung" [(ngModel)]="convention.description"></TextView>
+                </StackLayout>
             </StackLayout>
-            <StackLayout class="k-box">
-                <TextField class="input input-border" hint="Datum" [(ngModel)]="convention.date" keyboardType="datetime"></TextField>
-            </StackLayout>
-            <StackLayout class="k-box">
-                <TextField class="input input-border" hint="Link zur Con" [(ngModel)]="convention.conLink"></TextField>
-            </StackLayout>
-            <StackLayout class="k-box">
-                <TextField class="input input-border" hint="Planungsdokument" [(ngModel)]="convention.planDoc"></TextField>
-            </StackLayout>
-            <StackLayout class="k-box">
-                <TextView class="input input-border" hint="Beschreibung" [(ngModel)]="convention.description"></TextView>
-            </StackLayout>
-        </StackLayout>
-    </ScrollView>
-    <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
-        <Button text="Verwerfen" class="text-center btn" width="50%" (tap)="dismiss()"></Button>
-        <Button text="Fertig" class="text-center btn btn-primary" width="50%" (tap)="submit()"></Button>
+        </ScrollView>
+        <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
+            <Button text="Verwerfen" class="text-center btn" width="50%" (tap)="dismiss()"></Button>
+            <Button text="Fertig" class="text-center btn btn-primary" width="50%" (tap)="submit()"></Button>
+        </FlexboxLayout>
     </FlexboxLayout>
-</FlexboxLayout>
+
+    <AbsoluteLayout #overlay class="overlay" *ngIf="dateDialogOpen" (tap)="toggleDateDialog()" [ngClass]="{'showDialog': dateDialogOpen}">
+        <FlexboxLayout class="dialog">
+            <FlexboxLayout class="dialog__container">
+                <DatePicker loaded="onDatePickerLoaded" [(ngModel)]="convention.date"></DatePicker>
+                <TimePicker loaded="onPickerLoaded" [(ngModel)]="convention.date"></TimePicker>
+
+            </FlexboxLayout>
+        </FlexboxLayout>
+    </AbsoluteLayout>
+</GridLayout>

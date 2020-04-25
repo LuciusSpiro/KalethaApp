@@ -12,6 +12,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 export class ConEditComponent implements OnInit {
     convention: Con;
     conName: string;
+    dateDialogOpen: boolean = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -40,5 +41,9 @@ export class ConEditComponent implements OnInit {
 
     dismiss(): void {
         this.routerExtensions.back();
+    }
+
+    toggleDateDialog(): void {
+        this.dateDialogOpen = !this.dateDialogOpen;
     }
 }
