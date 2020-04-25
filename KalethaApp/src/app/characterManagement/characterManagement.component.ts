@@ -7,7 +7,8 @@ import { Character } from "../models/character.model";
 @Component({
     selector: "CharacterManagement",
     moduleId: module.id,
-    templateUrl: "./characterManagement.component.html"
+    templateUrl: "./characterManagement.component.html",
+    styleUrls: ["./characterManagement.Component.scss"]
 })
 export class CharacterManagementComponent {
     constructor(private characterService: CharacterService) { }

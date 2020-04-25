@@ -1,5 +1,5 @@
-<FlexboxLayout class="message">
-    <FlexboxLayout class="message__box" [nsRouterLink]="['./details', character.itName]">
+<FlexboxLayout class="k-card__wrapper">
+    <FlexboxLayout class="k-card" [nsRouterLink]="['./details', character.itName]">
         <Label class="message__text" [text]="character.itName"></Label>
         <Label class="message__date" [text]="character.class"></Label>
     </FlexboxLayout>

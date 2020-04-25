@@ -28,7 +28,7 @@ export class ListService {
     private assignList: Array<string> = [
         "Keine Zeit",
         "Interessiert",
-        "Nehme Teil"
+        "Dabei"
     ]
 
     getClassList(): Array<string> {

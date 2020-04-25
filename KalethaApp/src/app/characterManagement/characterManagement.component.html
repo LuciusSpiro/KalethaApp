@@ -1,16 +1,16 @@
 <Headbar headline="Characterverwaltung"></Headbar>
 
-<FlexboxLayout flexDirection="column" justifyContent="space-between">
+<FlexboxLayout class="character-management k-container">
     <ScrollView>
-        <FlexboxLayout flexDirection="column">
-            <FlexboxLayout *ngFor="let character of getCharacters()" width="100%">
+        <FlexboxLayout class="character-management__character-container">
+            <FlexboxLayout *ngFor="let character of getCharacters()">
                 <CharacterEntry [character]="character">
                 </CharacterEntry>
             </FlexboxLayout>
         </FlexboxLayout>
     </ScrollView>
-    <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
+    <FlexboxLayout class="character-management__footer">
         <Label width="75%"></Label>
-        <Button text="+" class="text-center btn btn-primary" [nsRouterLink]="['./edit/new']" width="25%"></Button>
+        <Button text="&#xf234;" class="text-center btn btn-primary fa" [nsRouterLink]="['./edit/new']" width="25%"></Button>
     </FlexboxLayout>
 </FlexboxLayout>

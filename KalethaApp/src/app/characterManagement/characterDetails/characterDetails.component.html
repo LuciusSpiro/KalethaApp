@@ -1,23 +1,22 @@
-<Headbar headline="Characterdetails"></Headbar>
+<Headbar headline="Charakterdetails"></Headbar>
 
-<FlexboxLayout class="character-details">
-    <FlexboxLayout class="character-details__box">
+<FlexboxLayout class="character-details k-container">
+    <FlexboxLayout class="k-segment">
         <Label class="message__text" [text]="character.itName"></Label>
     </FlexboxLayout>
-    <FlexboxLayout class="character-details__box">
+    <FlexboxLayout class="k-segment">
         <Label class="message__text" [text]="character.class"></Label>
         <Label class="message__text" [text]="character.rang"></Label>
     </FlexboxLayout>
-    <FlexboxLayout class="character-details__box character-details__box--big">
-        <ScrollView>
-            <FlexboxLayout class="character-details__box">
-                <Label class="message__text" text="Beschreibung"></Label>
-                <Label class="message__text" [text]="character.description"></Label>
-            </FlexboxLayout>
-        </ScrollView>
-    </FlexboxLayout>
+    <ScrollView>
+        <FlexboxLayout class="k-segment character-details__description">
+            <Label class="message__text" text="Beschreibung"></Label>
+            <Label class="message__text" [text]="character.description"></Label>
+        </FlexboxLayout>
+    </ScrollView>
 
-    <FlexboxLayout class="character-details__box">
-        <Button text="Bearbeiten" class="text-center btn btn-primary" [nsRouterLink]="['../../edit/' + character.itName]"></Button>
+    <FlexboxLayout class="character-details__footer">
+        <Label width="75%"></Label>
+        <Button text="&#xf040;" class="text-center btn btn-primary fa" [nsRouterLink]="['../../edit/' + character.itName]" width="25%"></Button>
     </FlexboxLayout>
 </FlexboxLayout>

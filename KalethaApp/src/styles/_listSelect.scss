@@ -1,0 +1,26 @@
+.list-select {
+    width: 100%;
+    flex-direction: row;
+    &__box {
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #000000;
+        border-radius: 10px;
+        margin: 10;
+        padding: 5 10;
+        background-color: #555555;
+        flex-direction: column;
+        &--active {
+            background-color: rgb(26, 136, 24);
+        }
+    }
+    .assign-switch__no {
+        background-color: rgb(119, 35, 35);
+    }
+    .assign-switch__maybe {
+        background-color: rgb(148, 148, 43);
+    }
+    .assign-switch__yes {
+        background-color: rgb(35, 119, 33);
+    }
+}

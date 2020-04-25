@@ -3,13 +3,21 @@
 <FlexboxLayout class="con-entry k-container">
     <ScrollView>
         <StackLayout>
-            <StackLayout class="box">
+            <StackLayout class="k-box">
                 <Label class="input input-border" [text]="convention.name" *ngIf="conName !== 'new'"></Label>
                 <TextField class="input input-border" hint="Name" [(ngModel)]="convention.name" *ngIf="conName === 'new'"></TextField>
+            </StackLayout>
+            <StackLayout class="k-box">
                 <TextField class="input input-border" hint="Datum" [(ngModel)]="convention.date" keyboardType="datetime"></TextField>
+            </StackLayout>
+            <StackLayout class="k-box">
                 <TextField class="input input-border" hint="Link zur Con" [(ngModel)]="convention.conLink"></TextField>
+            </StackLayout>
+            <StackLayout class="k-box">
                 <TextField class="input input-border" hint="Planungsdokument" [(ngModel)]="convention.planDoc"></TextField>
-                <TextField class="input input-border" hint="Beschreibung" [(ngModel)]="convention.description"></TextField>
+            </StackLayout>
+            <StackLayout class="k-box">
+                <TextView class="input input-border" hint="Beschreibung" [(ngModel)]="convention.description"></TextView>
             </StackLayout>
         </StackLayout>
     </ScrollView>

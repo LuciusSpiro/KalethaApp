@@ -1,26 +1,30 @@
 <Headbar headline="Bearbeite deinen Charakter"></Headbar>
 <GridLayout>
-    <FlexboxLayout flexDirection="column" justifyContent="space-between">
+    <FlexboxLayout class="k-container character-edit">
         <ScrollView>
-            <StackLayout class="card">
-                <StackLayout>
+            <StackLayout>
+                <FlexboxLayout class="k-box">
                     <Label class="input input-border" [text]="character.itName" *ngIf="characterItName !== 'new'"></Label>
                     <TextField class="input input-border" hint="IT Name" [(ngModel)]="character.itName" *ngIf="characterItName === 'new'"></TextField>
-                    <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
-                        <FlexboxLayout class="list-select">
-                            <FlexboxLayout class="list-select__box" (tap)="toggleClassDialog()" [ngClass]="{'list-select__box--active': classDialogOpen}">
-                                <Label class="list-select__text" [text]="character.class"></Label>
-                            </FlexboxLayout>
-                        </FlexboxLayout>
-                        <FlexboxLayout class="list-select" *ngIf="notACivilian()">
-                            <FlexboxLayout class="list-select__box" (tap)="toggleRangDialog()" [ngClass]="{'list-select__box--active': rangDialogOpen}">
-                                <Label class="list-select__text" [text]="character.rang"></Label>
-                            </FlexboxLayout>
+                </FlexboxLayout>
+                <FlexboxLayout class="k-segment">
+                    <FlexboxLayout class="list-select">
+                        <FlexboxLayout class="list-select__box character-edit__select" (tap)="toggleClassDialog()" [ngClass]="{'list-select__box--active': classDialogOpen}">
+                            <Label class="list-select__text" [text]="character.class"></Label>
                         </FlexboxLayout>
                     </FlexboxLayout>
-                    <TextField class="input input-border" hint="Beschreibung" [(ngModel)]="character.description"></TextField>
-                </StackLayout>
+                    <FlexboxLayout class="list-select" *ngIf="notACivilian()">
+                        <FlexboxLayout class="list-select__box character-edit__select" (tap)="toggleRangDialog()" [ngClass]="{'list-select__box--active': rangDialogOpen}">
+                            <Label class="list-select__text" [text]="character.rang"></Label>
+                        </FlexboxLayout>
+                    </FlexboxLayout>
+                </FlexboxLayout>
+                <FlexboxLayout class="k-box">
+                    <TextView class="input input-border" hint="Beschreibung" [(ngModel)]="character.description">
+                    </TextView>
+                </FlexboxLayout>
             </StackLayout>
+
         </ScrollView>
         <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
             <Button text="Verwerfen" class="text-center btn" width="50%" (tap)="dismiss()"></Button>

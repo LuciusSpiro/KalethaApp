@@ -3,8 +3,6 @@ import { Con } from "~/app/models/convention.model";
 import { ConService } from "~/app/conManagement/convention.service";
 import { ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import * as app from "tns-core-modules/application";
 
 @Component({
     selector: "ConEdit",
@@ -42,10 +40,5 @@ export class ConEditComponent implements OnInit {
 
     dismiss(): void {
         this.routerExtensions.back();
-    }
-
-    onDrawerButtonTap(): void {
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-        sideDrawer.showDrawer();
     }
 }
