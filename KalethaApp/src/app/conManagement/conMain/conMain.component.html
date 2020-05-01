@@ -10,7 +10,7 @@
         <Label class="message__text" text="Planungsdokument"></Label>
 
     </FlexboxLayout>
-    <FlexboxLayout class="k-box">
+    <FlexboxLayout class="k-box" [nsRouterLink]="['../../member/' + convention.name ]">
         <Label class="message__text" text="Teilnehmer"></Label>
         <Label class="message__text" [text]="convention.members?.length || 0"></Label>
     </FlexboxLayout>

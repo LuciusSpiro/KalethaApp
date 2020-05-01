@@ -3,8 +3,6 @@ import { Subject } from "rxjs";
 import { Message } from "~/app/models/message.model";
 import { ChatService } from "~/app/components/chat/chat.service";
 import { UserService } from "~/app/services/user.service";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import * as app from "tns-core-modules/application";
 
 @Component({
     selector: "Chat",
@@ -33,11 +31,6 @@ export class ChatComponent implements OnInit {
 
             this.scrollDown();
         });
-    }
-
-    onDrawerButtonTap(): void {
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-        sideDrawer.showDrawer();
     }
 
     sendMessage(): void {

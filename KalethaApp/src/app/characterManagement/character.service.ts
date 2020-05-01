@@ -62,6 +62,20 @@ export class CharacterService {
             });
     }
 
+    getAllCharactersFrom(name: string): Promise<Array<Character>> {
+        return firebase.firestore.collection("Character")
+            .where("otName", "==", name)
+            .get({ source: "server" })
+            .then((querySnapshot) => {
+                const characters = [];
+                querySnapshot.forEach((doc) => {
+                    characters.push(doc.data());
+                });
+
+                return characters;
+            });
+    }
+
     addCharacter(character: Character): void {
         if (!character.itName) {
             return;

@@ -1,0 +1,17 @@
+.login {
+    &__logo-container {
+        margin: 0;
+        justify-content: center;
+        flex-grow: 1;
+    }
+    &__logo {
+        height: 300;
+        margin: 0 auto;
+    }
+    &__footer-element {
+        flex-grow: 1;
+    }
+    &__area {
+        flex-grow: 1;
+    }
+}

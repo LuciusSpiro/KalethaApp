@@ -6,23 +6,23 @@ import { CharacterManagementComponent } from "./characterManagement.component";
 import { CharacterEditComponent } from "./characterEdit/characterEdit.component";
 import { CharacterDetailsComponent } from "./characterDetails/characterDetails.component";
 import { CharacterEntryComponent } from "./characterEntry/characterEntry.component";
-import { CharacterService } from "./character.service";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { ListService } from "../services/list.service";
 import { SharedModule } from "../components/shared.module";
+import { CharacterEntryModule } from "./characterEntry/characterEntry.module";
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
         NativeScriptFormsModule,
         CharacterManagementRoutingModule,
-        SharedModule
+        SharedModule,
+        CharacterEntryModule
     ],
     declarations: [
         CharacterManagementComponent,
         CharacterEditComponent,
-        CharacterDetailsComponent,
-        CharacterEntryComponent
+        CharacterDetailsComponent
     ],
     providers: [
         ListService

@@ -1,38 +1,31 @@
 <Headbar headline="Condetails"></Headbar>
 
 <GridLayout>
-    <FlexboxLayout class="con-details k-container">
+    <FlexboxLayout class="con-member k-container">
 
         <FlexboxLayout class="k-segment">
-            <Label class="message__text" [text]="convention.name"></Label>
-        </FlexboxLayout>
-        <FlexboxLayout class="k-segment">
-            <Label class="message__text" [text]="convention.date | date:'d MMM yyyy H:m'"></Label>
+            <Label class="message__text" [text]="conName"></Label>
         </FlexboxLayout>
 
         <FlexboxLayout class="k-segment">
             <FlexboxLayout class="list-select">
-                <FlexboxLayout class="list-select__box con-details__participation" (tap)="toggleAssignDialog()" [ngClass]="{'list-select__box--active': assignDialogOpen, 'assign-switch__no': getAssignmentState('Keine Zeit'), 'assign-switch__maybe': getAssignmentState('Interessiert'), 'assign-switch__yes': getAssignmentState('Dabei') }">
+                <FlexboxLayout class="list-select__box con-member__participation" (tap)="toggleAssignDialog()" [ngClass]="{'list-select__box--active': assignDialogOpen, 'assign-switch__no': getAssignmentState('Keine Zeit'), 'assign-switch__maybe': getAssignmentState('Interessiert'), 'assign-switch__yes': getAssignmentState('Dabei') }">
                     <Label class="list-select__text" [text]="currentMember.participation || 'Bitte sag uns ob du Teil nimmst'"></Label>
                 </FlexboxLayout>
 
-                <FlexboxLayout class="list-select__box con-details__character" *ngIf="currentMember.participation && currentMember.participation === 'Dabei'" (tap)="toggleCharacterDialog()" [ngClass]="{'list-select__box--active': characterDialogOpen}">
+                <FlexboxLayout class="list-select__box con-member__character" *ngIf="currentMember.participation && currentMember.participation === 'Dabei'" (tap)="toggleCharacterDialog()" [ngClass]="{'list-select__box--active': characterDialogOpen}">
                     <Label class="list-select__text" [text]="currentMember.characterName || 'Wähle deinen Charakter aus'"></Label>
                 </FlexboxLayout>
             </FlexboxLayout>
         </FlexboxLayout>
 
         <ScrollView>
-            <FlexboxLayout class="k-segment con-details__description">
-                <Label text="Beschreibung"></Label>
-                <Label [text]="convention.description"></Label>
+            <FlexboxLayout class="k-segment" *ngFor="let member of memberList">
+                <Label [text]="member.otName"></Label>
+                <Label [text]="member.characterName"></Label>
+                <FlexboxLayout class="con-member__dot" [ngClass]="{'con-member__dot--red': member.participation === 'Keine Zeit', 'con-member__dot--yellow': member.participation === 'Interessiert', 'con-member__dot--green': member.participation === 'Dabei' }"></FlexboxLayout>
             </FlexboxLayout>
         </ScrollView>
-
-        <FlexboxLayout class="k-segment">
-            <Label class="message__text" text="Link zur Con:"></Label>
-            <Label class="message__text" [text]="convention.conLink"></Label>
-        </FlexboxLayout>
     </FlexboxLayout>
 
     <AbsoluteLayout #overlay class="overlay" *ngIf="characterDialogOpen" (tap)="toggleCharacterDialog()" [ngClass]="{'showDialog': characterDialogOpen}">

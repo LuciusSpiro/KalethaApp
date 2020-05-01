@@ -1,4 +1,7 @@
-.con-entry {
+.con-edit {
     flex-direction: column;
     justify-content: space-between;
+    &__date {
+        flex-grow: 1;
+    }
 }

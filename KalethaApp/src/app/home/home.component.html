@@ -1,8 +1,8 @@
 <Headbar headline="Home"></Headbar>
 
-<FlexLayout class="k-container">
+<FlexboxLayout class="con-details k-container">
+    <FlexboxLayout class="k-segment">
+        <Label class="message__text" [text]="getToday('05/01/2020')"></Label>
+    </FlexboxLayout>
 
-    <Label class="page-icon fa" text="&#xf015;"></Label>
-    <Button text="printOut" (tap)="printOut()" height="20"></Button>
-
-</FlexLayout>
+</FlexboxLayout>

@@ -1,15 +1,25 @@
 <Headbar headline="Bearbeite deine Con"></Headbar>
 <GridLayout>
-    <FlexboxLayout class="con-entry k-container">
+    <FlexboxLayout class="con-edit k-container">
         <ScrollView>
             <StackLayout>
                 <StackLayout class="k-box">
                     <Label class="input input-border" [text]="convention.name" *ngIf="conName !== 'new'"></Label>
                     <TextField class="input input-border" hint="Name" [(ngModel)]="convention.name" *ngIf="conName === 'new'"></TextField>
                 </StackLayout>
-                <StackLayout class="k-box" (tap)="toggleDateDialog()">
-                    <TextField class="input input-border" hint="Datum" [(ngModel)]="convention.date" keyboardType="datetime"></TextField>
-                </StackLayout>
+
+                <FlexboxLayout class="k-segment">
+                    <FlexboxLayout class="list-select">
+                        <FlexboxLayout class="list-select__box con-edit__date" (tap)="toggleDateDialog()" [ngClass]="{'list-select__box--active': dateDialogOpen }">
+                            <Label class="list-select__text" [text]="convention.date | date:'d MMM yyyy'"></Label>
+                        </FlexboxLayout>
+
+                        <FlexboxLayout class="list-select__box con-edit__date" (tap)="toggleTimeDialog()" [ngClass]="{'list-select__box--active': timeDialogOpen}">
+                            <Label class="list-select__text" [text]="convention.time | date:'H:mm'"></Label>
+                        </FlexboxLayout>
+                    </FlexboxLayout>
+                </FlexboxLayout>
+
                 <StackLayout class="k-box">
                     <TextField class="input input-border" hint="Link zur Con" [(ngModel)]="convention.conLink"></TextField>
                 </StackLayout>
@@ -31,8 +41,14 @@
         <FlexboxLayout class="dialog">
             <FlexboxLayout class="dialog__container">
                 <DatePicker loaded="onDatePickerLoaded" [(ngModel)]="convention.date"></DatePicker>
-                <TimePicker loaded="onPickerLoaded" [(ngModel)]="convention.date"></TimePicker>
+            </FlexboxLayout>
+        </FlexboxLayout>
+    </AbsoluteLayout>
 
+    <AbsoluteLayout #overlay class="overlay" *ngIf="timeDialogOpen" (tap)="toggleTimeDialog()" [ngClass]="{'showDialog': timeDialogOpen}">
+        <FlexboxLayout class="dialog">
+            <FlexboxLayout class="dialog__container">
+                <TimePicker loaded="onPickerLoaded" [(ngModel)]="convention.time"> </TimePicker>
             </FlexboxLayout>
         </FlexboxLayout>
     </AbsoluteLayout>

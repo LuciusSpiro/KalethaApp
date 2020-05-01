@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import * as app from "tns-core-modules/application";
+import { KalethaTimeService } from "../services/kalethaTime.service";
+
 
 @Component({
     selector: "Home",
@@ -11,7 +11,9 @@ export class HomeComponent implements OnInit {
     items = [1, 2, 3, 4];
     value = 2;
 
-    constructor() {
+    constructor(
+        private kalethaTimeService: KalethaTimeService
+    ) {
         // Use the component constructor to inject providers.
     }
 
@@ -19,12 +21,9 @@ export class HomeComponent implements OnInit {
         // Init your component properties here.
     }
 
-    printOut() {
-        console.log(this.value);
-    }
+    getToday(): string {
+        const date = this.kalethaTimeService.getTodayInKaletha();
 
-    onDrawerButtonTap(): void {
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-        sideDrawer.showDrawer();
+        return `Wir schreiben heute den Tag ${date.dies} des Jahres ${date.annus}`;
     }
 }

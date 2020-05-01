@@ -10,11 +10,11 @@ import { CharacterService } from "~/app/characterManagement/character.service";
 import { Character } from "~/app/models/character.model";
 
 @Component({
-    selector: "ConDetails",
-    templateUrl: "./conDetails.component.html",
-    styleUrls: ["./conDetails.component.scss"]
+    selector: "ConMember",
+    templateUrl: "./conMember.component.html",
+    styleUrls: ["./conMember.component.scss"]
 })
-export class ConDetailsComponent implements OnInit {
+export class ConMemberComponent implements OnInit {
     convention: Con;
     conName: string;
     currentMember: Member = new Member();
@@ -23,10 +23,10 @@ export class ConDetailsComponent implements OnInit {
     assignDialogOpen: boolean = false;
     characterList: Array<Character> = [];
     characterDialogOpen: boolean = false;
+    memberList: Array<Member> = [];
 
     constructor(
         private route: ActivatedRoute,
-        private conService: ConService,
         private memberService: MemberService,
         private userService: UserService,
         private listService: ListService,
@@ -35,19 +35,22 @@ export class ConDetailsComponent implements OnInit {
     ngOnInit(): void {
         this.conName = this.route.snapshot.params.id;
         this.assignList = this.listService.getAssignList();
-        this.convention = this.conService.getCon(this.conName);
         this.characterList = this.characterService.characterList;
 
         this.currentMember.otName = this.userService.getCurrentUser().otName;
-        this.currentMember.conName = this.convention.name;
+        this.currentMember.conName = this.conName;
 
-        this.memberService.getMemberForCon(this.currentMember.otName, this.convention.name)
+        this.memberService.getAllMembersForCon(this.conName).then((memberList) => {
+            this.memberList = memberList;
+        });
+
+        this.memberService.getMemberForCon(this.currentMember.otName, this.conName)
             .then((member: Member) => {
                 if (member) {
                     this.currentMember = member;
                     this.loadedMember = true;
                 } else {
-                    this.memberService.addMemberToCon(this.currentMember, this.convention.name);
+                    this.memberService.addMemberToCon(this.currentMember, this.conName);
                 }
             });
     }
@@ -66,11 +69,11 @@ export class ConDetailsComponent implements OnInit {
 
     changeParticipationTo(assign: string) {
         this.currentMember.participation = assign;
-        this.memberService.updateMemberAtCon(this.currentMember, this.convention.name);
+        this.memberService.updateMemberAtCon(this.currentMember, this.conName);
     }
 
     changeCharacterTo(character: Character) {
         this.currentMember.characterName = character.itName;
-        this.memberService.updateMemberAtCon(this.currentMember, this.convention.name);
+        this.memberService.updateMemberAtCon(this.currentMember, this.conName);
     }
 }

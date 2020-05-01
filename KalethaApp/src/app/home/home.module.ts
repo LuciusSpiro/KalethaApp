@@ -5,6 +5,7 @@ import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { SharedModule } from "../components/shared.module";
+import { KalethaTimeService } from "../services/kalethaTime.service";
 
 @NgModule({
     imports: [
@@ -15,6 +16,9 @@ import { SharedModule } from "../components/shared.module";
     ],
     declarations: [
         HomeComponent
+    ],
+    providers: [
+        KalethaTimeService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

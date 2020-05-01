@@ -15,12 +15,12 @@ export class MemberService {
             .where("conName", "==", conName)
             .get({ source: "server" })
             .then((querySnapshot) => {
-                const characters = [];
+                const members = [];
                 querySnapshot.forEach((doc) => {
-                    characters.push(doc.data());
+                    members.push(doc.data());
                 });
 
-                return characters;
+                return members;
             });
     }
 
@@ -32,12 +32,12 @@ export class MemberService {
             });
     }
 
-    addMemberToCon(member: Member, convention: Con): void {
-        this.memberCollection.doc(convention.name + " " + member.otName).set(member);
+    addMemberToCon(member: Member, conName: string): void {
+        this.memberCollection.doc(conName + " " + member.otName).set(member);
 
     }
 
-    updateMemberAtCon(member: Member, convention: Con): void {
-        this.memberCollection.doc(convention.name + " " + member.otName).update(member);
+    updateMemberAtCon(member: Member, conName: string): void {
+        this.memberCollection.doc(conName + " " + member.otName).update(member);
     }
 }

@@ -13,6 +13,7 @@ import { MemberService } from "./member.service";
 import { ListService } from "../services/list.service";
 import { CharacterService } from "../characterManagement/character.service";
 import { SharedModule } from "../components/shared.module";
+import { ConMemberComponent } from "./conMember/conMember.component";
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import { SharedModule } from "../components/shared.module";
         ConEditComponent,
         ConMainComponent,
         ConEntryComponent,
-        ConDetailsComponent
+        ConDetailsComponent,
+        ConMemberComponent
     ],
     providers: [
         ConService,

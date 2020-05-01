@@ -1,13 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone } from "@angular/core";
 import { UserService } from "../services/user.service";
 import { Kalethaner } from "../models/kalethaner.model";
-
-/* ***********************************************************
-* Before you can navigate to this page from your app, you need to reference this page's module in the
-* global app router module. Add the following object to the global array of routes:
-* { path: "user", loadChildren: "./user/user.module#UserModule" }
-* Note that this simply points the path to the page module file. If you move the page, you need to update the route too.
-*************************************************************/
+import { Subject } from "rxjs";
 
 @Component({
     selector: "User",
@@ -15,13 +9,23 @@ import { Kalethaner } from "../models/kalethaner.model";
     templateUrl: "./user.component.html"
 })
 export class UserComponent implements OnInit {
-    kalethaner: Kalethaner;
+    $kalethaner: Subject<Array<Kalethaner>>;
+    neueNachricht: string;
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService, private zone: NgZone) {
+
     }
 
     ngOnInit(): void {
-        this.kalethaner = this.userService.getCurrentUser();
-    }
+        this.$kalethaner = new Subject<Array<Kalethaner>>();
 
+        this.userService.subscribeToUser((snapshot) => {
+            const kalethaner = [];
+            snapshot.forEach((doc) => {
+                kalethaner.push(doc.data());
+            });
+
+            this.zone.run(() => this.$kalethaner.next(kalethaner));
+        });
+    }
 }

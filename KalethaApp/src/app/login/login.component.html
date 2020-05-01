@@ -1,17 +1,49 @@
 <ActionBar class="action-bar" title="Kaletha"></ActionBar>
-<ScrollView>
-    <StackLayout class="card">
-        <Image *ngIf="isLoggingIn" class="logo" src="res://logo" stretch="none" horizontalAlignment="center"></Image>
-        <StackLayout [class]="isLoggingIn ? 'form white' : 'form gold'">
-            <TextField #email class="input input-border" hint="Email Address" keyboardType="email" [(ngModel)]="user.email" autocorrect="false" autocapitalizationType="none"></TextField>
-            <TextField #password class="input input-border" hint="Password" secure="true" [(ngModel)]="user.password"></TextField>
-            <Label *ngIf="!isLoggingIn" text="Bitte teile uns mit wer du bist:"></Label>
-            <TextField *ngIf="!isLoggingIn" class="input input-border" hint="IT Name" [(ngModel)]="neuerKalethaner.itName"></TextField>
-            <TextField *ngIf="!isLoggingIn" class="input input-border" hint="OT Name" [(ngModel)]="neuerKalethaner.otName"></TextField>
 
-            <Button [text]="isLoggingIn ? 'Login' : 'Register'" class="text-center btn btn-primary" (tap)="submit()"></Button>
-            <Button [text]="isLoggingIn ? 'Register' : 'Back to login'" class="text-center btn" (tap)="toggleDisplay()"></Button>
-            <!--Button horizontalAlignment="center" class="btn" text="Forgot password" (tap)="forgotPassword()" [opacity]="isLoggingIn ? 1 : 0"></Button-->
-        </StackLayout>
-    </StackLayout>
-</ScrollView>
+
+<GridLayout>
+
+    <FlexboxLayout class="login k-container">
+        <FlexboxLayout class="k-segment login__logo-container" *ngIf="isLoggingIn && showLogo">
+            <Image class="login__logo" src="res://logo"></Image>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="k-box">
+            <TextField #email class="input" hint="Email Adresse" keyboardType="email" (focus)="toggleLogo()" (blur)="toggleLogo()" [(ngModel)]="user.email" autocorrect="false" autocapitalizationType="none"></TextField>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="k-box">
+            <TextField #password class="input input-border" hint="Password" secure="true" [(ngModel)]="user.password" (focus)="toggleLogo()" (blur)="toggleLogo()"></TextField>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="k-box" *ngIf="!isLoggingIn">
+            <TextField class="input input-border" hint="Wie heist du?" [(ngModel)]="newKalethaner.otName"></TextField>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="k-segment" *ngIf="!isLoggingIn">
+            <FlexboxLayout class="list-select">
+                <FlexboxLayout class="list-select__box login__area" (tap)="toggleAreaDialog()" [ngClass]="{'list-select__box--active': areaDialogOpen }">
+                    <Label class="list-select__text" [text]="newKalethaner.area || 'Wähle dein Gebiet aus'"></Label>
+                </FlexboxLayout>
+            </FlexboxLayout>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="login__logo-container" *ngIf="!isLoggingIn">
+        </FlexboxLayout>
+
+        <FlexboxLayout class="login__footer">
+            <Button [text]="isLoggingIn ? 'Register' : 'Back to login'" class="text-center btn login__footer-element" (tap)="toggleDisplay()"></Button>
+            <Button [text]="isLoggingIn ? 'Login' : 'Register'" class="text-center btn btn-primary login__footer-element" (tap)="submit()"></Button>
+        </FlexboxLayout>
+    </FlexboxLayout>
+
+    <AbsoluteLayout #overlay class="overlay" *ngIf="areaDialogOpen" (tap)="toggleAreaDialog()" [ngClass]="{'showDialog': areaDialogOpen}">
+        <FlexboxLayout class="dialog">
+            <FlexboxLayout class="dialog__container">
+                <FlexboxLayout class="dialog__box" *ngFor="let item of areaList" (tap)="changeAreaTo(item)">
+                    <Label class="dialog__value" [text]="item"></Label>
+                </FlexboxLayout>
+            </FlexboxLayout>
+        </FlexboxLayout>
+    </AbsoluteLayout>
+</GridLayout>

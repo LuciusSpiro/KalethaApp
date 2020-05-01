@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import * as app from "tns-core-modules/application";
+
 import { Character } from "~/app/models/character.model";
 import { CharacterService } from "../character.service";
 import { ListService } from "~/app/services/list.service";
@@ -25,13 +24,15 @@ export class CharacterEditComponent implements OnInit {
         private route: ActivatedRoute,
         private listService: ListService,
         private characterService: CharacterService,
-        private routerExtensions: RouterExtensions) {
+        private routerExtensions: RouterExtensions,
+        private userService: UserService) {
     }
 
     ngOnInit(): void {
         this.characterItName = this.route.snapshot.params.id;
         if (this.characterItName === "new") {
             this.character = new Character();
+            this.character.otName = this.userService.getCurrentUser().otName;
         } else {
             this.character = this.characterService.getCharacter(this.characterItName);
         }
@@ -52,11 +53,6 @@ export class CharacterEditComponent implements OnInit {
 
     dismiss(): void {
         this.routerExtensions.back();
-    }
-
-    onDrawerButtonTap(): void {
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-        sideDrawer.showDrawer();
     }
 
     toggleRangDialog() {

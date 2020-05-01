@@ -16,10 +16,4 @@ export class CharacterManagementComponent {
     getCharacters(): Array<Character> {
         return this.characterService.characterList;
     }
-
-    onDrawerButtonTap(): void {
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-        sideDrawer.showDrawer();
-    }
-
 }

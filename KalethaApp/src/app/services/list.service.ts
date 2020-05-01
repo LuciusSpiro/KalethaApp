@@ -29,7 +29,13 @@ export class ListService {
         "Keine Zeit",
         "Interessiert",
         "Dabei"
-    ]
+    ];
+
+    private areaList: Array<string> = [
+        "Speyer",
+        "Kaiserslautern",
+        "Karlsruhe"
+    ];
 
     getClassList(): Array<string> {
         return this.classList;
@@ -41,5 +47,9 @@ export class ListService {
 
     getAssignList(): Array<string> {
         return this.assignList;
+    }
+
+    getAreaList(): Array<string> {
+        return this.areaList;
     }
 }

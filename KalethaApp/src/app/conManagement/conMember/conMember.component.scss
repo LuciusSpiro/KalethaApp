@@ -1,0 +1,33 @@
+.con-member {
+    width: 100%;
+    flex-direction: column;
+    &__participation {
+        flex-grow: 1;
+    }
+    &__character {
+        width: 66%;
+        flex-shrink: 0;
+    }
+    &__dot {
+        border-radius: 15;
+        height: 15;
+        width: 15;
+        background-color: #555555;
+        &--red {
+            background-color: rgb(119, 35, 35);
+        }
+        &--yellow {
+            background-color: rgb(148, 148, 43);
+        }
+        &--green {
+            background-color: rgb(35, 119, 33);
+        }
+    }
+    .con-member__description {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-grow: 1;
+        height: 100%;
+    }
+}

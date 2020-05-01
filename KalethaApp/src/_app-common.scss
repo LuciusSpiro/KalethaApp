@@ -40,6 +40,12 @@ ActionBar .action-bar-title {
     }
 }
 
+TextField.input {
+    font-size: 16;
+    color: $k-primary;
+    placeholder-color: $k-primary;
+}
+
 // Drawer navigation custom styles
 $sidedrawer-header-image-size: 60;
 $sidedrawer-header-image-offset-top: 20;

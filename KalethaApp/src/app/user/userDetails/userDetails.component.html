@@ -1,0 +1,54 @@
+<Headbar headline="Kalethaner"></Headbar>
+
+<GridLayout>
+    <FlexboxLayout class="con-details k-container">
+
+        <FlexboxLayout class="k-segment">
+            <Label class="message__text" [text]="user.otName"></Label>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="k-segment">
+            <Label class="message__text" [text]="user.eMail"></Label>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="k-segment" *ngIf="!editMode">
+            <Label class="message__text" [text]="user.area"></Label>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="k-segment" *ngIf="editMode">
+            <FlexboxLayout class="list-select">
+                <FlexboxLayout class="list-select__box con-details__participation" (tap)="toggleAreaDialog()" [ngClass]="{'list-select__box--active': areaDialogOpen }">
+                    <Label class="list-select__text" [text]="user.area || 'Wähle dein Gebiet aus'"></Label>
+                </FlexboxLayout>
+            </FlexboxLayout>
+        </FlexboxLayout>
+
+        <ScrollView *ngIf="!editMode">
+            <FlexboxLayout class="character-management__character-container">
+                <FlexboxLayout *ngFor="let character of characterList">
+                    <CharacterEntry [character]="character">
+                    </CharacterEntry>
+                </FlexboxLayout>
+            </FlexboxLayout>
+        </ScrollView>
+
+        <FlexboxLayout class="spacer">
+        </FlexboxLayout>
+
+        <Button class="btn btn-primary" text="Bearbeiten" *ngIf="rightsToEdit() && !editMode" (tap)="activateEditMode()"></Button>
+        <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between" *ngIf="editMode">
+            <Button text="Verwerfen" class="text-center btn" width="50%" (tap)="dismiss()"></Button>
+            <Button text="Speichern" class="btn btn-primary" width="50%" (tap)="applyChanges()"></Button>
+        </FlexboxLayout>
+    </FlexboxLayout>
+
+    <AbsoluteLayout #overlay class="overlay" *ngIf="areaDialogOpen" (tap)="toggleAreaDialog()" [ngClass]="{'showDialog': areaDialogOpen}">
+        <FlexboxLayout class="dialog">
+            <FlexboxLayout class="dialog__container">
+                <FlexboxLayout class="dialog__box" *ngFor="let item of areaList" (tap)="changeAreaTo(item)">
+                    <Label class="dialog__value" [text]="item"></Label>
+                </FlexboxLayout>
+            </FlexboxLayout>
+        </FlexboxLayout>
+    </AbsoluteLayout>
+</GridLayout>
