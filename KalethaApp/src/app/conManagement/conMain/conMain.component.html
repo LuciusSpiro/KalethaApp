@@ -12,9 +12,9 @@
     </FlexboxLayout>
     <FlexboxLayout class="k-box" [nsRouterLink]="['../../member/' + convention.name ]">
         <Label class="message__text" text="Teilnehmer"></Label>
-        <Label class="message__text" [text]="convention.members?.length || 0"></Label>
+        <Label class="message__text" [text]="getAmountOfMember()"></Label>
     </FlexboxLayout>
 
-    <Chat></Chat>
+    <Chat [channel]="convention.name + 'Chat'"></Chat>
 
 </FlexboxLayout>

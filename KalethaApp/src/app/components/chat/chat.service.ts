@@ -6,33 +6,25 @@ const firebase = require("nativescript-plugin-firebase");
 @Injectable()
 export class ChatService {
 
-    subscribeToChat(callBack: any) {
-        firebase.firestore.collection("Chat").onSnapshot(callBack);
+    subscribeToChat(callBack: any, channel: string) {
+        firebase.firestore.collection(channel).orderBy("date", "desc").limit(3).onSnapshot(callBack);
     }
 
-    getAllMessagesFrom(): Promise<Array<Message>> {
-        return firebase.firestore.collection("Chat").get({ source: "server" }).then((querySnapshot) => {
-            const chat = [];
-            querySnapshot.forEach((doc) => {
-                chat.push(doc.data());
+    getAllMessagesFrom(channel: string): Promise<Array<Message>> {
+        return firebase.firestore.collection(channel)
+            .orderBy("date")
+            .get({ source: "server" })
+            .then((querySnapshot) => {
+                const chat = [];
+                querySnapshot.forEach((doc) => {
+                    chat.push(doc.data());
+                });
+
+                return chat;
             });
-
-            return chat;
-        });
     }
 
-    sendMessage(message: Message) {
-        firebase.firestore.collection("Chat").add(message);
-    }
-
-    compareMessages(a: Message, b: Message) {
-        if (a.date < b.date) {
-            return -1;
-        }
-        if (a.date > b.date) {
-            return 1;
-        }
-
-        return 0;
+    sendMessage(message: Message, channel: string) {
+        firebase.firestore.collection(channel).add(message);
     }
 }

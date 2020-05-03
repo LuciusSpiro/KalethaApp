@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, NgZone, OnInit } from "@angular/core";
+import { Component, ViewChild, ElementRef, NgZone, OnInit, Input } from "@angular/core";
 import { Subject } from "rxjs";
 import { Message } from "~/app/models/message.model";
 import { ChatService } from "~/app/components/chat/chat.service";
@@ -10,12 +10,15 @@ import { UserService } from "~/app/services/user.service";
     styleUrls: ["./chat.Component.scss"]
 })
 export class ChatComponent implements OnInit {
+    @Input() channel: string;
     $chat: Subject<Array<Message>>;
     neueNachricht: string;
 
     @ViewChild("chatScrollArea", { static: false }) chatScrollArea: ElementRef;
-    constructor(private chatService: ChatService, private userService: UserService, private zone: NgZone) {
-
+    constructor(
+        private chatService: ChatService,
+        private userService: UserService,
+        private zone: NgZone) {
     }
 
     ngOnInit(): void {
@@ -26,11 +29,10 @@ export class ChatComponent implements OnInit {
             snapshot.forEach((doc) => {
                 chat.push(doc.data());
             });
-
-            this.zone.run(() => this.$chat.next(chat.sort((a, b) => this.chatService.compareMessages(a, b))));
+            this.zone.run(() => this.$chat.next(chat.reverse()));
 
             this.scrollDown();
-        });
+        }, this.channel);
     }
 
     sendMessage(): void {
@@ -41,9 +43,9 @@ export class ChatComponent implements OnInit {
             message: this.neueNachricht,
             from: this.userService.getCurrentUser().otName,
             to: "all",
-            date: new Date().toISOString()
+            date: new Date()
         };
-        this.chatService.sendMessage(message);
+        this.chatService.sendMessage(message, this.channel);
         this.neueNachricht = "";
     }
 
@@ -56,5 +58,9 @@ export class ChatComponent implements OnInit {
             this.chatScrollArea.nativeElement
                 .scrollToVerticalOffset(this.chatScrollArea.nativeElement.scrollableHeight, false);
         }, 300);
+    }
+
+    test() {
+        console.log(this.chatScrollArea.nativeElement.verticalOffset);
     }
 }

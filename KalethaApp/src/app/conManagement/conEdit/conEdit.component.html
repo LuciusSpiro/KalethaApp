@@ -39,7 +39,7 @@
 
     <AbsoluteLayout #overlay class="overlay" *ngIf="dateDialogOpen" (tap)="toggleDateDialog()" [ngClass]="{'showDialog': dateDialogOpen}">
         <FlexboxLayout class="dialog">
-            <FlexboxLayout class="dialog__container">
+            <FlexboxLayout class="dialog__container dialog__container--picker">
                 <DatePicker loaded="onDatePickerLoaded" [(ngModel)]="convention.date"></DatePicker>
             </FlexboxLayout>
         </FlexboxLayout>
@@ -47,7 +47,7 @@
 
     <AbsoluteLayout #overlay class="overlay" *ngIf="timeDialogOpen" (tap)="toggleTimeDialog()" [ngClass]="{'showDialog': timeDialogOpen}">
         <FlexboxLayout class="dialog">
-            <FlexboxLayout class="dialog__container">
+            <FlexboxLayout class="dialog__container dialog__container--picker">
                 <TimePicker loaded="onPickerLoaded" [(ngModel)]="convention.time"> </TimePicker>
             </FlexboxLayout>
         </FlexboxLayout>

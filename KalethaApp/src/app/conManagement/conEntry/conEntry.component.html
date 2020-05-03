@@ -2,6 +2,5 @@
     <FlexboxLayout class="k-card" [nsRouterLink]="['./main', con.name]">
         <Label class="message__text" [text]="con.name"></Label>
         <Label class="message__date" text="{{con.date | date:'d MMM yyyy'}} {{con.time | date:'H:mm'}}"></Label>
-        <Label class="message__number" [text]="con.members?.length"></Label>
     </FlexboxLayout>
 </FlexboxLayout>

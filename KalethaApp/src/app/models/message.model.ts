@@ -3,6 +3,6 @@ export class Message {
     public message: string,
     public from: string,
     public to: string,
-    public date: string
+    public date: Date
   ) { }
 }
