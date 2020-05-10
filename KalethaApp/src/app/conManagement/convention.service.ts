@@ -65,4 +65,8 @@ export class ConService {
         firebase.firestore.collection("Cons").doc(con.name).update(con);
     }
 
+    deleteCon(con: Con): void {
+        firebase.firestore.collection("Cons").doc(con.name).delete();
+    }
+
 }

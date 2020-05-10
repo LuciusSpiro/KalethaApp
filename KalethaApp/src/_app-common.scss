@@ -38,6 +38,9 @@ ActionBar .action-bar-title {
     &-primary {
         background-color: $btn-color;
     }
+    &-negative {
+        background-color: $k-error;
+    }
 }
 
 TextField.input {

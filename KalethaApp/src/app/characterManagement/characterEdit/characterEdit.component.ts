@@ -55,26 +55,31 @@ export class CharacterEditComponent implements OnInit {
         this.routerExtensions.back();
     }
 
-    toggleRangDialog() {
+    delete(): void {
+        this.characterService.deleteCharacter(this.character);
+        this.routerExtensions.navigate(["./characterManagement/"]);
+    }
+
+    toggleRangDialog(): void {
         this.rangDialogOpen = !this.rangDialogOpen;
     }
 
-    toggleClassDialog() {
+    toggleClassDialog(): void {
         this.classDialogOpen = !this.classDialogOpen;
     }
 
-    changeRangTo(newRang: string) {
+    changeRangTo(newRang: string): void {
         this.character.rang = newRang;
     }
 
-    changeClassTo(newClass: string) {
+    changeClassTo(newClass: string): void {
         this.character.class = newClass;
         if (!this.notACivilian()) {
             this.character.rang = "Kalethaner";
         }
     }
 
-    notACivilian() {
+    notACivilian(): boolean {
         return (this.character.class !== "Zivilist" && this.character.class !== "Diplomat");
     }
 }

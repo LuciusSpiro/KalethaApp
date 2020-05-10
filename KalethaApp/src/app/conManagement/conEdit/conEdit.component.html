@@ -3,7 +3,7 @@
     <FlexboxLayout class="con-edit k-container">
         <ScrollView>
             <StackLayout>
-                <StackLayout class="k-box">
+                <StackLayout [ngClass]="{'k-box': conName === 'new' , 'k-segment': conName !== 'new'}">
                     <Label class="input input-border" [text]="convention.name" *ngIf="conName !== 'new'"></Label>
                     <TextField class="input input-border" hint="Name" [(ngModel)]="convention.name" *ngIf="conName === 'new'"></TextField>
                 </StackLayout>
@@ -32,8 +32,9 @@
             </StackLayout>
         </ScrollView>
         <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
-            <Button text="Verwerfen" class="text-center btn" width="50%" (tap)="dismiss()"></Button>
-            <Button text="Fertig" class="text-center btn btn-primary" width="50%" (tap)="submit()"></Button>
+            <Button text="Verwerfen" class="text-center btn" width="33%" (tap)="dismiss()"></Button>
+            <Button text="Löschen" *ngIf="conName !== 'new'" class="text-center btn btn-negative" width="33%" (tap)="delete()"></Button>
+            <Button text="Fertig" class="text-center btn btn-primary" width="33%" (tap)="submit()"></Button>
         </FlexboxLayout>
     </FlexboxLayout>
 

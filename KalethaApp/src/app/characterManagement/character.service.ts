@@ -96,4 +96,9 @@ export class CharacterService {
         firebase.firestore.collection("Character").doc(character.itName).update(character);
     }
 
+    deleteCharacter(character: Character): void {
+        this.characterList = this.characterList.filter((entry) => entry.itName !== character.itName);
+        firebase.firestore.collection("Character").doc(character.itName).delete();
+    }
+
 }

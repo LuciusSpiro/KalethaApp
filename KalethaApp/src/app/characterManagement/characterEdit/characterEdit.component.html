@@ -3,7 +3,7 @@
     <FlexboxLayout class="k-container character-edit">
         <ScrollView>
             <StackLayout>
-                <FlexboxLayout class="k-box">
+                <FlexboxLayout [ngClass]="{'k-box': characterItName === 'new' , 'k-segment': characterItName !== 'new'}">
                     <Label class="input input-border" [text]="character.itName" *ngIf="characterItName !== 'new'"></Label>
                     <TextField class="input input-border" hint="IT Name" [(ngModel)]="character.itName" *ngIf="characterItName === 'new'"></TextField>
                 </FlexboxLayout>
@@ -27,8 +27,9 @@
 
         </ScrollView>
         <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
-            <Button text="Verwerfen" class="text-center btn" width="50%" (tap)="dismiss()"></Button>
-            <Button text="Fertig" class="text-center btn btn-primary" width="50%" (tap)="submit()"></Button>
+            <Button text="Verwerfen" class="text-center btn" width="33%" (tap)="dismiss()"></Button>
+            <Button text="Löschen" class="text-center btn btn-negative" width="33%" (tap)="delete()"></Button>
+            <Button text="Fertig" class="text-center btn btn-primary" width="33%" (tap)="submit()"></Button>
         </FlexboxLayout>
     </FlexboxLayout>
 
