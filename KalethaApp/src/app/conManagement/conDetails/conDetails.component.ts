@@ -8,6 +8,7 @@ import { Member } from "~/app/models/member.model";
 import { ListService } from "~/app/services/list.service";
 import { CharacterService } from "~/app/characterManagement/character.service";
 import { Character } from "~/app/models/character.model";
+import * as utils from "tns-core-modules/utils/utils";
 
 @Component({
     selector: "ConDetails",
@@ -56,21 +57,25 @@ export class ConDetailsComponent implements OnInit {
         return this.currentMember.participation === state;
     }
 
-    toggleAssignDialog() {
+    toggleAssignDialog(): void {
         this.assignDialogOpen = !this.assignDialogOpen;
     }
 
-    toggleCharacterDialog() {
+    toggleCharacterDialog(): void {
         this.characterDialogOpen = !this.characterDialogOpen;
     }
 
-    changeParticipationTo(assign: string) {
+    changeParticipationTo(assign: string): void {
         this.currentMember.participation = assign;
         this.memberService.updateMemberAtCon(this.currentMember, this.convention.name);
     }
 
-    changeCharacterTo(character: Character) {
+    changeCharacterTo(character: Character): void {
         this.currentMember.characterName = character.itName;
         this.memberService.updateMemberAtCon(this.currentMember, this.convention.name);
+    }
+
+    openLink(link: string): void {
+        utils.openUrl(link);
     }
 }

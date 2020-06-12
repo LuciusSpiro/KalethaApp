@@ -29,7 +29,7 @@
             </FlexboxLayout>
         </ScrollView>
 
-        <FlexboxLayout class="k-segment">
+        <FlexboxLayout class="k-box" (tap)="openLink(convention.conLink)">
             <Label class="message__text" text="Link zur Con:"></Label>
             <Label class="message__text" [text]="convention.conLink"></Label>
         </FlexboxLayout>

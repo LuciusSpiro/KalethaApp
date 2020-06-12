@@ -6,9 +6,9 @@
         <Label class="con-main__text" [text]="convention.name" [nsRouterLink]="['../../details/' + convention.name]"></Label>
         <Label text="&#xf040;" class="fa con-main__edit" [nsRouterLink]="['../../edit/' + convention.name ]"></Label>
     </FlexboxLayout>
-    <FlexboxLayout class="k-box">
+    <FlexboxLayout class="k-box" (tap)="openLink(convention.planDoc)">
         <Label class="message__text" text="Planungsdokument"></Label>
-
+        <Label class="message__text" [text]="convention.planDoc"></Label>
     </FlexboxLayout>
     <FlexboxLayout class="k-box" [nsRouterLink]="['../../member/' + convention.name ]">
         <Label class="message__text" text="Teilnehmer"></Label>

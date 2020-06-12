@@ -13,6 +13,7 @@ export class ChatComponent implements OnInit {
     @Input() channel: string;
     $chat: Subject<Array<Message>>;
     neueNachricht: string;
+    limit: number = 20;
 
     @ViewChild("chatScrollArea", { static: false }) chatScrollArea: ElementRef;
     constructor(
@@ -24,15 +25,7 @@ export class ChatComponent implements OnInit {
     ngOnInit(): void {
         this.$chat = new Subject<Array<Message>>();
 
-        this.chatService.subscribeToChat((snapshot) => {
-            const chat = [];
-            snapshot.forEach((doc) => {
-                chat.push(doc.data());
-            });
-            this.zone.run(() => this.$chat.next(chat.reverse()));
-
-            this.scrollDown();
-        }, this.channel);
+        this.chatService.subscribeToChat(this.fetchMessageCallback, this.channel, this.limit);
     }
 
     sendMessage(): void {
@@ -53,6 +46,11 @@ export class ChatComponent implements OnInit {
         return message.from === this.userService.getCurrentUser().otName;
     }
 
+    increaseLimit() {
+        this.limit += 20;
+        this.chatService.subscribeToChat(this.fetchMessageCallback, this.channel, this.limit);
+    }
+
     scrollDown() {
         setTimeout(() => {
             this.chatScrollArea.nativeElement
@@ -63,4 +61,14 @@ export class ChatComponent implements OnInit {
     test() {
         console.log(this.chatScrollArea.nativeElement.verticalOffset);
     }
+
+    fetchMessageCallback = (snapshot) => {
+        const chat = [];
+        snapshot.forEach((doc) => {
+            chat.push(doc.data());
+        });
+        this.zone.run(() => this.$chat.next(chat.reverse()));
+
+        this.scrollDown();
+    };
 }

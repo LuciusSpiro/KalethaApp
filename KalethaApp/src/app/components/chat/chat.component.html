@@ -1,7 +1,8 @@
-<FlexboxLayout flexDirection="column" justifyContent="space-between">
+<FlexboxLayout class="chat" justifyContent="space-between">
     <ScrollView #chatScrollArea>
-        <FlexboxLayout flexDirection="column">
-            <FlexboxLayout *ngFor="let message of $chat | async" width="100%">
+        <FlexboxLayout flexDirection="column" class="chat__text-area">
+            <Button text="Mehr laden" class="text-center btn btn-primary " (tap)="increaseLimit()"></Button>
+            <FlexboxLayout *ngFor="let message of $chat | async" width="100%" class="chat__messages">
                 <Message [text]="message.message" [from]="message.from" [right]="isThisMyMessage(message)"></Message>
             </FlexboxLayout>
         </FlexboxLayout>

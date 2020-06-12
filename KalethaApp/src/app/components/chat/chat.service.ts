@@ -6,8 +6,8 @@ const firebase = require("nativescript-plugin-firebase");
 @Injectable()
 export class ChatService {
 
-    subscribeToChat(callBack: any, channel: string) {
-        firebase.firestore.collection(channel).orderBy("date", "desc").limit(3).onSnapshot(callBack);
+    subscribeToChat(callBack: any, channel: string, limit: number) {
+        firebase.firestore.collection(channel).orderBy("date", "desc").limit(limit).onSnapshot(callBack);
     }
 
     getAllMessagesFrom(channel: string): Promise<Array<Message>> {
