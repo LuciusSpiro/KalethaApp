@@ -7,6 +7,9 @@ import { AppComponent } from "./app.component";
 import { LoginService } from "./login/login.service";
 import { UserService } from "./services/user.service";
 import { CharacterService } from "./characterManagement/character.service";
+import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
+import { PushNotificationService } from "./services/pushNotification.service";
+import { FcmService } from "./services/fcm.service";
 
 @NgModule({
     bootstrap: [
@@ -15,12 +18,14 @@ import { CharacterService } from "./characterManagement/character.service";
     imports: [
         AppRoutingModule,
         NativeScriptModule,
-        NativeScriptUISideDrawerModule
+        NativeScriptUISideDrawerModule,
+        NativeScriptHttpClientModule
     ],
     providers: [
         LoginService,
         UserService,
-        CharacterService
+        CharacterService,
+        PushNotificationService
     ],
     declarations: [
         AppComponent

@@ -3,6 +3,7 @@ import { Subject } from "rxjs";
 import { Message } from "~/app/models/message.model";
 import { ChatService } from "~/app/components/chat/chat.service";
 import { UserService } from "~/app/services/user.service";
+import { PushNotificationService } from "~/app/services/pushNotification.service";
 
 @Component({
     selector: "Chat",
@@ -19,6 +20,7 @@ export class ChatComponent implements OnInit {
     constructor(
         private chatService: ChatService,
         private userService: UserService,
+        private pushService: PushNotificationService,
         private zone: NgZone) {
     }
 
@@ -39,6 +41,13 @@ export class ChatComponent implements OnInit {
             date: new Date()
         };
         this.chatService.sendMessage(message, this.channel);
+        this.pushService.triggerPushNotificationForTopic(
+            "all", // this.channel,
+            message.from,
+            message.message,
+            { type: "chat" }
+        );
+
         this.neueNachricht = "";
     }
 
@@ -58,10 +67,6 @@ export class ChatComponent implements OnInit {
         }, 300);
     }
 
-    test() {
-        console.log(this.chatScrollArea.nativeElement.verticalOffset);
-    }
-
     fetchMessageCallback = (snapshot) => {
         const chat = [];
         snapshot.forEach((doc) => {
@@ -70,5 +75,5 @@ export class ChatComponent implements OnInit {
         this.zone.run(() => this.$chat.next(chat.reverse()));
 
         this.scrollDown();
-    };
+    }
 }

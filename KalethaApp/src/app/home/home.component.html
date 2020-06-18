@@ -2,7 +2,7 @@
 
 <FlexboxLayout class="con-details k-container">
     <FlexboxLayout class="k-segment">
-        <Label class="message__text" [text]="getToday('05/01/2020')"></Label>
+        <Label class="message__text" [text]="getToday()"></Label>
     </FlexboxLayout>
-
+    <Button text="Push Test" class="text-center btn btn-negative" (tap)="pushTest()"></Button>
 </FlexboxLayout>

@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { ConService } from "~/app/conManagement/convention.service";
 import { MemberService } from "../member.service";
 import { Member } from "~/app/models/member.model";
+import * as utils from "tns-core-modules/utils/utils";
 
 @Component({
     selector: "ConMain",
@@ -31,5 +32,9 @@ export class ConMainComponent implements OnInit {
 
     getAmountOfMember(): number {
         return this.memberList.filter((entry) => entry.participation === "Dabei").length || 0;
+    }
+
+    openLink(link: string): void {
+        utils.openUrl(link);
     }
 }

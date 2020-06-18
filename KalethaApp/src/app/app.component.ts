@@ -7,6 +7,7 @@ import * as app from "tns-core-modules/application";
 import { LoginService } from "./login/login.service";
 import { UserService } from "./services/user.service";
 import { CharacterService } from "./characterManagement/character.service";
+import { FcmService } from "./services/fcm.service";
 
 const firebase = require("nativescript-plugin-firebase");
 
@@ -27,7 +28,8 @@ export class AppComponent implements OnInit {
         private router: Router,
         private routerExtensions: RouterExtensions,
         private userService: UserService,
-        private characterService: CharacterService) {
+        private characterService: CharacterService,
+        ) {
     }
 
     ngOnInit(): void {
@@ -62,15 +64,20 @@ export class AppComponent implements OnInit {
               alert("Firebase push token: " + token);
             },*/
             onMessageReceivedCallback(message) {
-                alert({
-                    title: "Push message: " + (message.title !== undefined ? message.title : ""),
-                    message: JSON.stringify(message.body),
-                    okButtonText: "W00t!"
-                });
+                const payload = JSON.parse(message.data.payload);
+                
+                if (message.foreground === false && payload.type === "chat") {
+                    FcmService.lastNotification = message;
+                } else {
+                    alert({
+                        title: "Push message: " + (message.data.title !== undefined ? message.data.title : "123"),
+                        message: JSON.stringify(message.data.body),
+                        okButtonText: "W00t!"
+                    });
+                }
             },
-            // persist should be set to false as otherwise numbers aren't returned during livesync
             persist: false,
-            // storageBucket: 'gs://yowwlr.appspot.com',
+            showNotificationsWhenInForeground: true,
             onAuthStateChanged: (data: any) => {
                 if (data.loggedIn) {
                     LoginService.token = data.user.uid;
