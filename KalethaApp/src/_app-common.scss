@@ -43,10 +43,15 @@ ActionBar .action-bar-title {
     }
 }
 
+.input {
+    width: 100%;
+}
+
 TextField.input {
     font-size: 16;
     color: $k-primary;
     placeholder-color: $k-primary;
+    width: 100%;
 }
 
 // Drawer navigation custom styles

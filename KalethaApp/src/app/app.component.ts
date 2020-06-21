@@ -67,14 +67,14 @@ export class AppComponent implements OnInit {
             onMessageReceivedCallback(message) {
                 const payload = JSON.parse(message.data.payload);
 
-                if (message.foreground === false && payload.type === "chat") {
+                if (message.foreground === false && payload.type) {
                     FcmService.lastNotification = message;
                 } else {
-                    alert({
-                        title: "Push message: " + (message.data.title !== undefined ? message.data.title : "123"),
-                        message: JSON.stringify(message.data.body),
-                        okButtonText: "W00t!"
-                    });
+                    //    alert({
+                    //        title: "Push message: " + (message.data.title !== undefined ? message.data.title : "123"),
+                    //        message: JSON.stringify(message.data.body),
+                    //        okButtonText: "W00t!"
+                    //    });
                 }
             },
             persist: false,

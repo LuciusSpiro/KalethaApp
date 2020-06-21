@@ -3,6 +3,7 @@ import { Con } from "~/app/models/convention.model";
 import { ConService } from "~/app/conManagement/convention.service";
 import { ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
+import { PushNotificationService } from "~/app/services/pushNotification.service";
 
 @Component({
     selector: "ConEdit",
@@ -18,7 +19,8 @@ export class ConEditComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private conService: ConService,
-        private routerExtensions: RouterExtensions) {
+        private routerExtensions: RouterExtensions,
+        private pushService: PushNotificationService) {
     }
 
     ngOnInit(): void {
@@ -33,6 +35,22 @@ export class ConEditComponent implements OnInit {
     submit(): void {
         if (this.conName === "new") {
             this.conService.addCon(this.convention);
+            const date = this.convention.date.getDate() + "-" +
+                this.convention.date.getMonth() + "-" +
+                this.convention.date.getFullYear() + " " +
+                this.convention.date.getHours() + ":" +
+                this.convention.date.getHours();
+
+            this.pushService.triggerPushNotificationForTopic(
+                "all", // this.channel,
+                "Neuer Termin: " + this.convention.name,
+                date,
+                {
+                    type: "con",
+                    link: "./conManagement/details/",
+                    sublink: this.convention.name
+                }
+            );
         } else {
             this.conService.updateCon(this.convention);
         }
