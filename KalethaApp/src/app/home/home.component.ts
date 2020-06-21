@@ -41,10 +41,4 @@ export class HomeComponent implements OnInit {
 
         return `Wir schreiben den Tag ${date.dies} des Jahres ${date.annus}`;
     }
-
-    pushTest(): void {
-        this.pushNotificationService.triggerPushNotificationForTopic(
-            "all", "Spam", "Tja meine Alphatester hier kann ich euch jetzt zu spammne", {}
-        );
-    }
 }
