@@ -24,10 +24,17 @@ export class ConMainComponent implements OnInit {
 
     ngOnInit(): void {
         this.conName = this.route.snapshot.params.id;
-        this.convention = this.conService.getCon(this.conName);
+        if (this.conService.isInitialized) {
+            this.convention = this.conService.getCon(this.conName);
+        } else {
+            this.conService.init().then(() => {
+                this.convention = this.conService.getCon(this.conName);
+            });
+        }
         this.memberService.getAllMembersForCon(this.conName).then((memberList) => {
             this.memberList = memberList;
         });
+
     }
 
     getAmountOfMember(): number {

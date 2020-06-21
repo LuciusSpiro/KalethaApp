@@ -8,6 +8,7 @@ import { LoginService } from "./login/login.service";
 import { UserService } from "./services/user.service";
 import { CharacterService } from "./characterManagement/character.service";
 import { FcmService } from "./services/fcm.service";
+import { ConService } from "./conManagement/convention.service";
 
 const firebase = require("nativescript-plugin-firebase");
 
@@ -28,8 +29,8 @@ export class AppComponent implements OnInit {
         private router: Router,
         private routerExtensions: RouterExtensions,
         private userService: UserService,
-        private characterService: CharacterService,
-        ) {
+        private characterService: CharacterService
+    ) {
     }
 
     ngOnInit(): void {
@@ -65,7 +66,7 @@ export class AppComponent implements OnInit {
             },*/
             onMessageReceivedCallback(message) {
                 const payload = JSON.parse(message.data.payload);
-                
+
                 if (message.foreground === false && payload.type === "chat") {
                     FcmService.lastNotification = message;
                 } else {

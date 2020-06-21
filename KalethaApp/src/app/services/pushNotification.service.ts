@@ -32,7 +32,7 @@ export class PushNotificationService {
         };
         this.postData(data).subscribe((res) => {
             console.log((<any>res));
-        });;
+        });
     }
 
     postData(data: any) {

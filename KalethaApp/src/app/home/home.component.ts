@@ -3,6 +3,7 @@ import { KalethaTimeService } from "../services/kalethaTime.service";
 import { PushNotificationService } from "../services/pushNotification.service";
 import { RouterExtensions } from "nativescript-angular/router";
 import { FcmService } from "../services/fcm.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "Home",
@@ -15,18 +16,21 @@ export class HomeComponent implements OnInit {
         private kalethaTimeService: KalethaTimeService,
         private pushNotificationService: PushNotificationService,
         private routerExtensions: RouterExtensions,
+        private router: Router,
         private zone: NgZone
-    ) {
-        // Use the component constructor to inject providers.
-    }
+    ) { }
 
     ngOnInit(): void {
         this.pushNotificationService.subscribeToTopic("all");
 
         FcmService.lastNotification = {};
-        FcmService.$notification.subscribe((stuff) => {
-            if (stuff) {
-                this.zone.run(() => this.routerExtensions.navigate(["./chatRoom/"]));
+        FcmService.$notification.subscribe((notification) => {
+            const payload = JSON.parse(notification.payload);
+            console.log(notification, payload);
+            if (payload.sublink) {
+                this.zone.run(() => this.routerExtensions.navigate([payload.link, payload.sublink]));
+            } else {
+                this.zone.run(() => this.routerExtensions.navigate([payload.link]));
             }
 
         });

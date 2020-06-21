@@ -12,6 +12,8 @@ import { PushNotificationService } from "~/app/services/pushNotification.service
 })
 export class ChatComponent implements OnInit {
     @Input() channel: string;
+    @Input() link: string;
+    @Input() sublink: string = "";
     $chat: Subject<Array<Message>>;
     neueNachricht: string;
     limit: number = 20;
@@ -45,7 +47,11 @@ export class ChatComponent implements OnInit {
             "all", // this.channel,
             message.from,
             message.message,
-            { type: "chat" }
+            {
+                type: "chat",
+                link: this.link,
+                sublink: this.sublink
+            }
         );
 
         this.neueNachricht = "";

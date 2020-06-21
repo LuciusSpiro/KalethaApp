@@ -15,6 +15,6 @@
         <Label class="message__text" [text]="getAmountOfMember()"></Label>
     </FlexboxLayout>
 
-    <Chat [channel]="convention.name + 'Chat'"></Chat>
+    <Chat [channel]="convention.name + 'Chat'" [link]="'./conManagement/main/'" [sublink]="convention.name"></Chat>
 
 </FlexboxLayout>

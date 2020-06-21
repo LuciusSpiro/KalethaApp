@@ -10,6 +10,7 @@ import { CharacterService } from "./characterManagement/character.service";
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { PushNotificationService } from "./services/pushNotification.service";
 import { FcmService } from "./services/fcm.service";
+import { ConService } from "./conManagement/convention.service";
 
 @NgModule({
     bootstrap: [

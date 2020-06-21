@@ -10,20 +10,25 @@ const firebase = require("nativescript-plugin-firebase");
 export class ConService {
     $cons: Subject<Array<Con>>;
     conList: Array<Con>;
-    init(): void {
+    isInitialized: boolean = false;
+
+    init(): Promise<boolean> {
         this.$cons = new Subject();
-        this.getAllCons().then((cons) => {
-            this.$cons.next(cons);
-        });
+
         this.$cons.subscribe((cons: Array<Con>) => this.conList = cons);
         this.subscribeToConCollection((snapshot) => {
             const cons = [];
             snapshot.forEach((doc) => {
                 cons.push(doc.data());
             });
-
             this.$cons.next(cons);
         });
+
+        return this.getAllCons().then((cons) => {
+            this.$cons.next(cons);
+            this.isInitialized = true;
+        }).then(() => true);
+
     }
 
     subscribeToConCollection(callBack: any): void {
