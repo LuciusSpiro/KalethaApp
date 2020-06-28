@@ -19,14 +19,16 @@ export class CharacterService {
 
     }
 
-    init(): void {
+    init(): any {
         if (!this.isInitiated) {
             this.$characters = new Subject();
             this.getAllCharacters().then((characters) => {
                 this.$characters.next(characters);
             });
             this.$characters.subscribe((characters: Array<Character>) => this.characterList = characters);
-            this.subscribeToCharacterCollection((snapshot) => {
+            this.isInitiated = true;
+
+            return this.subscribeToCharacterCollection((snapshot) => {
                 const characters = [];
                 snapshot.forEach((doc) => {
                     characters.push(doc.data());
@@ -34,8 +36,10 @@ export class CharacterService {
 
                 this.$characters.next(characters);
             });
-            this.isInitiated = true;
+
         }
+
+        return undefined;
     }
 
     subscribeToCharacterCollection(callBack: any): void {
@@ -46,6 +50,20 @@ export class CharacterService {
 
     getCharacter(itName: string): Character {
         return this.characterList.find((character) => character.itName === itName);
+    }
+
+    getCharacterByName(itName: string): Promise<Character> {
+        return firebase.firestore.collection("Character")
+            .where("itName", "==", itName)
+            .get({ source: "server" })
+            .then((querySnapshot) => {
+                let character;
+                querySnapshot.forEach((doc) => {
+                    character = doc.data();
+                });
+
+                return character;
+            });
     }
 
     getAllCharacters(): Promise<Array<Character>> {

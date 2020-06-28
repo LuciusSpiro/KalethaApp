@@ -1,6 +1,6 @@
 <Headbar headline="Charakterdetails"></Headbar>
 
-<FlexboxLayout class="character-details k-container">
+<FlexboxLayout class="character-details k-container" *ngIf="character">
     <FlexboxLayout class="k-segment">
         <Label class="message__text" [text]="character.itName"></Label>
     </FlexboxLayout>
@@ -15,7 +15,7 @@
         </FlexboxLayout>
     </ScrollView>
 
-    <FlexboxLayout class="character-details__footer">
+    <FlexboxLayout class="character-details__footer" *ngIf="character.otName === getOtName()">
         <Label width="75%"></Label>
         <Button text="&#xf040;" class="text-center btn btn-primary fa" [nsRouterLink]="['../../edit/' + character.itName]" width="25%"></Button>
     </FlexboxLayout>
