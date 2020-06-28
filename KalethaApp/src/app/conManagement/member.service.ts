@@ -37,7 +37,7 @@ export class MemberService {
 
     }
 
-    updateMemberAtCon(member: Member, conName: string): void {
-        this.memberCollection.doc(conName + " " + member.otName).update(member);
+    updateMemberAtCon(member: Member, conName: string): any {
+        return this.memberCollection.doc(conName + " " + member.otName).update(member);
     }
 }

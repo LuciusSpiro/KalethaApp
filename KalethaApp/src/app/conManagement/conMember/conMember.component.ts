@@ -69,11 +69,19 @@ export class ConMemberComponent implements OnInit {
 
     changeParticipationTo(assign: string) {
         this.currentMember.participation = assign;
-        this.memberService.updateMemberAtCon(this.currentMember, this.conName);
+        this.memberService.updateMemberAtCon(this.currentMember, this.conName).then(() => {
+            return this.memberService.getAllMembersForCon(this.conName);
+        }).then((memberList) => {
+            this.memberList = memberList;
+        });
     }
 
     changeCharacterTo(character: Character) {
         this.currentMember.characterName = character.itName;
-        this.memberService.updateMemberAtCon(this.currentMember, this.conName);
+        this.memberService.updateMemberAtCon(this.currentMember, this.conName).then(() => {
+            return this.memberService.getAllMembersForCon(this.conName);
+        }).then((memberList) => {
+            this.memberList = memberList;
+        });
     }
 }

@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
         FcmService.lastNotification = {};
         FcmService.$notification.subscribe((notification) => {
             const payload = JSON.parse(notification.payload);
-            console.log(notification, payload);
+            // console.log(notification, payload);
             if (payload.sublink) {
                 this.zone.run(() => this.routerExtensions.navigate([payload.link, payload.sublink]));
             } else {

@@ -23,6 +23,16 @@
             background-color: rgb(35, 119, 33);
         }
     }
+    &__char {
+        padding-left: 5;
+        flex-grow: 1;
+    }
+    &__name {
+        width: 33%;
+    }
+    &__member-container {
+        flex-direction: column;
+    }
     .con-member__description {
         flex-direction: column;
         justify-content: flex-start;

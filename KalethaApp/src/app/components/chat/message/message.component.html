@@ -1,6 +1,7 @@
 <FlexboxLayout class="message" [ngClass]="{'message--right': right}">
     <FlexboxLayout class="message__box">
-        <Label class="message__text" [text]="text"></Label>
+        <TextView editable="false" class="message__text" [text]="text">
+        </TextView>
         <Label class="message__from" [text]="from"></Label>
     </FlexboxLayout>
 </FlexboxLayout>

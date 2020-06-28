@@ -20,10 +20,12 @@
         </FlexboxLayout>
 
         <ScrollView>
-            <FlexboxLayout class="k-segment" *ngFor="let member of memberList">
-                <Label [text]="member.otName"></Label>
-                <Label [text]="member.characterName"></Label>
-                <FlexboxLayout class="con-member__dot" [ngClass]="{'con-member__dot--red': member.participation === 'Keine Zeit', 'con-member__dot--yellow': member.participation === 'Interessiert', 'con-member__dot--green': member.participation === 'Dabei' }"></FlexboxLayout>
+            <FlexboxLayout class="con-member__member-container">
+                <FlexboxLayout class="k-segment" *ngFor="let member of memberList">
+                    <Label class="con-member__name" [text]="member.otName"></Label>
+                    <Label class="con-member__char" [text]="member.characterName + memberList.length"></Label>
+                    <FlexboxLayout class="con-member__dot" [ngClass]="{'con-member__dot--red': member.participation === 'Keine Zeit', 'con-member__dot--yellow': member.participation === 'Interessiert', 'con-member__dot--green': member.participation === 'Dabei' }"></FlexboxLayout>
+                </FlexboxLayout>
             </FlexboxLayout>
         </ScrollView>
     </FlexboxLayout>
