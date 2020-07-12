@@ -30,7 +30,9 @@ export class PushNotificationService {
             },
             to: "/topics/" + topic
         };
-        this.postData(data);
+        this.postData(data).subscribe(() => {
+            console.log("bob");
+        });
     }
 
     postData(data: any) {

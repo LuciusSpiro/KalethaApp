@@ -15,13 +15,10 @@ export class ConManagementComponent implements OnInit {
     ngOnInit(): void {
         if (!this.cons) {
             this.conService.init();
-
         }
     }
 
     getCons(): Array<Con> {
         return this.conService.conList;
     }
-
-
 }
