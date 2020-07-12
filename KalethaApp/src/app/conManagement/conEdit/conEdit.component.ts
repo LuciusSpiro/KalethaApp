@@ -33,29 +33,41 @@ export class ConEditComponent implements OnInit {
     }
 
     submit(): void {
-        if (this.conName === "new") {
-            this.conService.addCon(this.convention);
-            const date = this.convention.date.getDate() + "-" +
-                this.convention.date.getMonth() + "-" +
-                this.convention.date.getFullYear() + " " +
-                this.convention.date.getHours() + ":" +
-                this.convention.date.getHours();
-
-            this.pushService.triggerPushNotificationForTopic(
-                "all", // this.channel,
-                "Neuer Termin: " + this.convention.name,
-                date,
-                {
-                    type: "con",
-                    link: "./conManagement/details/",
-                    sublink: this.convention.name
-                }
-            );
+        if (!this.convention.name) {
+            alert({
+                title: "Fehler!",
+                message: "Deine Con hat keinen Namen",
+                okButtonText: "Ich werde einen eintragen"
+            });
         } else {
-            this.conService.updateCon(this.convention);
-        }
+            if (this.conName === "new") {
+                this.createNewCon();
+            } else {
+                this.conService.updateCon(this.convention);
+            }
 
-        this.routerExtensions.navigate(["./conManagement/main/" + this.convention.name]);
+            this.routerExtensions.navigate(["./conManagement/main/" + this.convention.name]);
+        }
+    }
+
+    createNewCon(): void {
+        this.conService.addCon(this.convention);
+        const date = this.convention.date.getDate() + "-" +
+            this.convention.date.getMonth() + "-" +
+            this.convention.date.getFullYear() + " " +
+            this.convention.date.getHours() + ":" +
+            this.convention.date.getHours();
+
+        this.pushService.triggerPushNotificationForTopic(
+            "all", // this.channel,
+            "Neuer Termin: " + this.convention.name,
+            date,
+            {
+                type: "con",
+                link: "./conManagement/details/",
+                sublink: this.convention.name
+            }
+        );
     }
 
     delete(): void {

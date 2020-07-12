@@ -33,8 +33,8 @@
         </ScrollView>
         <FlexboxLayout flexDirection="column" flexShrink="0" justifyContent="space-between">
             <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
-                <Button text="Verwerfen" class="text-center btn" width="50%" (tap)="dismiss()"></Button>
-                <Button text="Löschen" *ngIf="conName !== 'new'" class="text-center btn btn-negative" width="50%" (tap)="delete()"></Button>
+                <Button text="Verwerfen" class="text-center btn" flexGrow="1" (tap)="dismiss()"></Button>
+                <Button text="Löschen" *ngIf="conName !== 'new'" class="text-center btn btn-negative" flexGrow="1" (tap)="delete()"></Button>
             </FlexboxLayout>
             <Button text="Fertig" class="text-center btn btn-primary" width="100%" (tap)="submit()"></Button>
         </FlexboxLayout>
