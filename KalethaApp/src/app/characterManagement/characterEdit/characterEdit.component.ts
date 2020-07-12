@@ -42,13 +42,39 @@ export class CharacterEditComponent implements OnInit {
     }
 
     submit(): void {
-        if (this.characterItName === "new") {
-            this.characterService.addCharacter(this.character);
-        } else {
-            this.characterService.updateCharacter(this.character);
+        if (this.errorCheck()) {
+            if (this.characterItName === "new") {
+                this.characterService.addCharacter(this.character);
+            } else {
+                this.characterService.updateCharacter(this.character);
+            }
+
+            this.routerExtensions.navigate(["./characterManagement/details/" + this.character.itName]);
+        }
+    }
+
+    errorCheck(): boolean {
+        if (!this.character.itName) {
+            alert({
+                title: "Fehler!",
+                message: "Dein Charakter hat keinen Namen",
+                okButtonText: "Ich werde einen eintragen"
+            });
+
+            return false;
         }
 
-        this.routerExtensions.navigate(["./characterManagement/details/" + this.character.itName]);
+        if (!this.character.otName) {
+            alert({
+                title: "Fehler!",
+                message: "Ein Fehler ist aufgetreten. Bitte logge dich aus und wieder ein.",
+                okButtonText: "AYE!"
+            });
+
+            return false;
+        }
+
+        return true;
     }
 
     dismiss(): void {

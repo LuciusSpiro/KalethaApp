@@ -28,29 +28,29 @@
         </ScrollView>
         <FlexboxLayout flexDirection="column" flexShrink="0" justifyContent="space-between">
             <FlexboxLayout flexDirection="row" flexShrink="0" justifyContent="space-between">
-                <Button text="Verwerfen" class="text-center btn" width="50%" (tap)="dismiss()"></Button>
-                <Button text="Löschen" class="text-center btn btn-negative" width="50%" (tap)="delete()"></Button>
+                <Button text="Verwerfen" class="text-center btn" flexGrow="1" (tap)="dismiss()"></Button>
+                <Button text="Löschen" class="text-center btn btn-negative" flexGrow="1" (tap)="delete()" *ngIf="characterItName !== 'new'"></Button>
             </FlexboxLayout>
-            <Button text="Fertig" class="text-center btn btn-primary" (tap)="submit()"></Button>
+            <Button text=" Fertig " class="text-center btn btn-primary " (tap)="submit() "></Button>
         </FlexboxLayout>
     </FlexboxLayout>
 
 
-    <AbsoluteLayout #overlay class="overlay" *ngIf="rangDialogOpen" (tap)="toggleRangDialog()" [ngClass]="{'showDialog': rangDialogOpen}">
-        <FlexboxLayout class="dialog">
-            <FlexboxLayout class="dialog__container">
-                <FlexboxLayout class="dialog__box" *ngFor="let item of rangList" (tap)="changeRangTo(item)">
-                    <Label class="dialog__value" [text]="item"></Label>
+    <AbsoluteLayout #overlay class="overlay " *ngIf="rangDialogOpen " (tap)="toggleRangDialog() " [ngClass]="{ 'showDialog': rangDialogOpen} ">
+        <FlexboxLayout class="dialog ">
+            <FlexboxLayout class="dialog__container ">
+                <FlexboxLayout class="dialog__box " *ngFor="let item of rangList " (tap)="changeRangTo(item) ">
+                    <Label class="dialog__value " [text]="item "></Label>
                 </FlexboxLayout>
             </FlexboxLayout>
         </FlexboxLayout>
     </AbsoluteLayout>
 
-    <AbsoluteLayout #overlay class="overlay" *ngIf="classDialogOpen" (tap)="toggleClassDialog()" [ngClass]="{'showDialog': classDialogOpen}">
-        <FlexboxLayout class="dialog">
-            <FlexboxLayout class="dialog__container">
-                <FlexboxLayout class="dialog__box" *ngFor="let item of classList" (tap)="changeClassTo(item)">
-                    <Label class="dialog__value" [text]="item"></Label>
+    <AbsoluteLayout #overlay class="overlay " *ngIf="classDialogOpen " (tap)="toggleClassDialog() " [ngClass]="{ 'showDialog': classDialogOpen} ">
+        <FlexboxLayout class="dialog ">
+            <FlexboxLayout class="dialog__container ">
+                <FlexboxLayout class="dialog__box " *ngFor="let item of classList " (tap)="changeClassTo(item) ">
+                    <Label class="dialog__value " [text]="item "></Label>
                 </FlexboxLayout>
             </FlexboxLayout>
         </FlexboxLayout>
