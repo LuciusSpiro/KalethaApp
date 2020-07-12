@@ -44,33 +44,66 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginService.login(this.user)
-      .then(() => {
-        this.isAuthenticating = false;
-
-        return this.userService.fetchCurrentUser();
-      })
-      .then(() => {
-        this.routerExtensions.navigate(["/"], { clearHistory: true });
-      })
-      .catch((message: any) => {
-        this.isAuthenticating = false;
+    if (!this.user.email) {
+      alert({
+        title: "Fehler!",
+        message: "Du hast keine Email Addresse angegeben",
+        okButtonText: "Verzeihe, ich werde meinen Fehler beheben."
       });
+    } else if (!this.user.password) {
+      alert({
+        title: "Fehler!",
+        message: "Bitte gib dein Password ein",
+        okButtonText: "AYE!"
+      });
+    } else {
+      this.loginService.login(this.user)
+        .then(() => {
+          this.isAuthenticating = false;
+
+          return this.userService.fetchCurrentUser();
+        })
+        .then(() => {
+          this.routerExtensions.navigate(["/"], { clearHistory: true });
+        })
+        .catch((message: any) => {
+          this.isAuthenticating = false;
+        });
+    }
   }
 
   signUp() {
-
-    this.loginService.register(this.user)
-      .then(() => {
-        this.isAuthenticating = false;
-        this.toggleDisplay();
-        this.newKalethaner.eMail = this.user.email;
-        this.userService.addKalethanerToDatabase(this.newKalethaner);
-      })
-      .catch((message: any) => {
-        alert(message);
-        this.isAuthenticating = false;
+    if (!this.newKalethaner.otName) {
+      alert({
+        title: "Fehler!",
+        message: "Dein Name fehlt.",
+        okButtonText: "Ich werde ihn eintragen"
       });
+    } else if (!this.user.email) {
+      alert({
+        title: "Fehler!",
+        message: "Dein Email Addresse fehlt.",
+        okButtonText: "Ich werde immer das ganze Formular"
+      });
+    } else if (!this.user.password) {
+      alert({
+        title: "Fehler!",
+        message: "Sei kein Dummi nutz ein...",
+        okButtonText: "Passwort!"
+      });
+    } else {
+      this.loginService.register(this.user)
+        .then(() => {
+          this.isAuthenticating = false;
+          this.toggleDisplay();
+          this.newKalethaner.eMail = this.user.email;
+          this.userService.addKalethanerToDatabase(this.newKalethaner);
+        })
+        .catch((message: any) => {
+          alert(message);
+          this.isAuthenticating = false;
+        });
+    }
   }
 
   toggleDisplay() {
