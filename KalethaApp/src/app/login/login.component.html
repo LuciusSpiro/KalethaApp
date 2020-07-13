@@ -13,7 +13,7 @@
         </FlexboxLayout>
 
         <FlexboxLayout class="k-box">
-            <TextField #password class="input input-border" hint="Password" secure="true" [(ngModel)]="user.password" (focus)="toggleLogo()" (blur)="toggleLogo()"></TextField>
+            <TextField #password class="input input-border" hint="Passwort" secure="true" [(ngModel)]="user.password" (focus)="toggleLogo()" (blur)="toggleLogo()"></TextField>
         </FlexboxLayout>
 
         <FlexboxLayout class="k-box" *ngIf="!isLoggingIn">

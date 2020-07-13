@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
     } else if (!this.user.password) {
       alert({
         title: "Fehler!",
-        message: "Bitte gib dein Password ein",
+        message: "Passwort eingeben! Ho!",
         okButtonText: "AYE!"
       });
     } else {
